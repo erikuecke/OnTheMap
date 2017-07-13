@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9E0316741F1699CA00110259 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0316731F1699CA00110259 /* LogInViewController.swift */; };
+		9E03167C1F16CCBD00110259 /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167B1F16CCBD00110259 /* OTMClient.swift */; };
+		9E03167E1F16CDF800110259 /* OTMConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167D1F16CDF800110259 /* OTMConvenience.swift */; };
+		9E0316801F16D73800110259 /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167F1F16D73800110259 /* OTMConstants.swift */; };
 		9E52C5D41F157C7C00AF5E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C5D31F157C7C00AF5E83 /* AppDelegate.swift */; };
 		9E52C5D61F157C7C00AF5E83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C5D51F157C7C00AF5E83 /* ViewController.swift */; };
 		9E52C5D91F157C7C00AF5E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E52C5D71F157C7C00AF5E83 /* Main.storyboard */; };
@@ -19,6 +22,9 @@
 
 /* Begin PBXFileReference section */
 		9E0316731F1699CA00110259 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		9E03167B1F16CCBD00110259 /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
+		9E03167D1F16CDF800110259 /* OTMConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConvenience.swift; sourceTree = "<group>"; };
+		9E03167F1F16D73800110259 /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
 		9E52C5D01F157C7C00AF5E83 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E52C5D31F157C7C00AF5E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E52C5D51F157C7C00AF5E83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +47,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E0316781F16BD0200110259 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9E03167B1F16CCBD00110259 /* OTMClient.swift */,
+				9E03167D1F16CDF800110259 /* OTMConvenience.swift */,
+				9E03167F1F16D73800110259 /* OTMConstants.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9E0316791F16BD2600110259 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9E03167A1F16BD3800110259 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		9E52C5C71F157C7C00AF5E83 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +91,9 @@
 			isa = PBXGroup;
 			children = (
 				9E52C5D31F157C7C00AF5E83 /* AppDelegate.swift */,
+				9E0316781F16BD0200110259 /* Model */,
+				9E03167A1F16BD3800110259 /* View */,
+				9E0316791F16BD2600110259 /* Controller */,
 				9E52C5D51F157C7C00AF5E83 /* ViewController.swift */,
 				9E52C5E51F15906400AF5E83 /* PinMapViewController.swift */,
 				9E52C5E71F1590AD00AF5E83 /* ListTableViewController.swift */,
@@ -147,10 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E52C5E61F15906400AF5E83 /* PinMapViewController.swift in Sources */,
+				9E03167C1F16CCBD00110259 /* OTMClient.swift in Sources */,
+				9E0316801F16D73800110259 /* OTMConstants.swift in Sources */,
 				9E52C5D61F157C7C00AF5E83 /* ViewController.swift in Sources */,
 				9E52C5D41F157C7C00AF5E83 /* AppDelegate.swift in Sources */,
 				9E0316741F1699CA00110259 /* LogInViewController.swift in Sources */,
 				9E52C5E81F1590AD00AF5E83 /* ListTableViewController.swift in Sources */,
+				9E03167E1F16CDF800110259 /* OTMConvenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

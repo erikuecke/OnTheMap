@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        unsubscribeFromAllNotifications()
         
     }
     
@@ -52,6 +52,17 @@ class LoginViewController: UIViewController {
     // Login Pressed
     @IBAction func loginPressed(_ sender: Any) {
         
+        OTMClient.User.Username = emailTextField.text!
+        OTMClient.User.Password = passwordTextField.text!
+        
+        print("\(OTMClient.User.Username)\(OTMClient.User.Password)")
+        OTMClient.sharedInstance().authenticateWithViewController(self) { (success, errorString) in
+            if success {
+                print("success at LOGINPRESSED!")
+            } else {
+                print("authenticateWithViewController(self)")
+            }
+        }
     }
     
     // Sign Up for account
