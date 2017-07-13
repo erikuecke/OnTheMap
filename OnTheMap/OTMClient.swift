@@ -21,12 +21,65 @@ class OTMClient: NSObject {
 
     var sessionKey: String? = nil
     var userID: Int? = nil
+    var firstName: String? = nil
+    var lastName: String? = nil
     
     // MARK: Initializers
     
     override init() {
         super.init()
     }
+    
+    // MARK: GET
+    
+    func taskForGETMethod(_ method: String, parameters: [String: AnyObject]?, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        
+        /* 1. Set the parameters */
+        
+        /* 2/3. Build the URL, Configure the request */
+        let request = NSMutableURLRequest(url: otmURLFromParameters(parameters, withPathExtension: method))
+        
+        /* 4. Make the request */
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGET(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error!)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            let range = Range(5..<data.count)
+            let newData = data.subdata(in: range) /* subset response data! */
+            
+            /* 5/6. Parse the data and use the data (happens in completion handler) */
+            self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForGET)
+        }
+        
+        /* 7. Start the request */
+        task.resume()
+        
+        return task
+
+    }
+    
     
     
     // Mark: Post
@@ -73,10 +126,9 @@ class OTMClient: NSObject {
             
             let range = Range(5..<data.count)
             let newData = data.subdata(in: range) /* subset response data! */
-            print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!)
+            
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
-//            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
             self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)
             
         }
@@ -100,6 +152,15 @@ class OTMClient: NSObject {
     
     // MARK: Helpers
     
+    // Substitue the key for the value that is conatined within the method name
+    func substituteKeyInMethod(_ method: String, key: String, value: String) -> String? {
+        if method.range(of: "\(key)") != nil {
+            return method.replacingOccurrences(of: "\(key)", with: value)
+        } else {
+            return nil
+        }
+    }
+    
     // Given raw JSON, return a usable Foundaton object
     private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
@@ -112,7 +173,6 @@ class OTMClient: NSObject {
         }
         
         completionHandlerForConvertData(parsedResult, nil)
-        print(parsedResult)
     }
     
     // create a URL from parameters
@@ -130,7 +190,7 @@ class OTMClient: NSObject {
             }
         }
         
-        print(components.url!)
+        
         return components.url!
     }
 }

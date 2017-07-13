@@ -37,5 +37,8 @@ extension OTMClient {
         // MARK: Udacity
         static let UdacityAccount = "account"
         static let UdacitySessionKey = "key"
+        static let UdacityUser = "user"
+        static let UdacityLastName = "last_name"
+        static let UdacityFirstName = "first_name"
     }
 }
