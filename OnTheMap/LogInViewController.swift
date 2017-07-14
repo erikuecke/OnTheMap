@@ -52,21 +52,36 @@ class LoginViewController: UIViewController {
     // Login Pressed
     @IBAction func loginPressed(_ sender: Any) {
         
-        OTMClient.User.Username = emailTextField.text!
-        OTMClient.User.Password = passwordTextField.text!
+        userDidTapView(self)
         
-        print("\(OTMClient.User.Username)\(OTMClient.User.Password)")
-        OTMClient.sharedInstance().authenticateWithViewController(self) { (success, errorString) in
-            if success {
-                print("success at LOGINPRESSED!")
-            } else {
-                print("authenticateWithViewController(self)")
+        if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
+            debugTextLabel.text = "Username or Password Empty"
+        } else {
+            OTMClient.User.Username = emailTextField.text!
+            OTMClient.User.Password = passwordTextField.text!
+            
+            OTMClient.sharedInstance().authenticateWithViewController(self) { (success, errorString) in
+                if success {
+                    print("Print from authenticateViewController")
+                    self.completeLogIn()
+                } else {
+                    print("authenticateWithViewController(self)")
+                }
             }
         }
+        
+        
     }
     
     // Sign Up for account
     @IBAction func signUpPressed(_ sender: Any) {
+    }
+    
+    // Complete login and segue to first controller
+    private func completeLogIn() {
+        self.debugTextLabel.text = ""
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
     }
     
     
@@ -80,6 +95,7 @@ extension LoginViewController: UITextFieldDelegate {
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         return true
     }
@@ -87,6 +103,7 @@ extension LoginViewController: UITextFieldDelegate {
     // MARK: Show/Hide Keyboard
     
     func keyboardWillShow(_ notification: Notification) {
+        print("keyboardWillShow")
         if !keyboardOnScreen {
             view.frame.origin.y -= keyboardHeight(notification)
 //            logoImageView.isHidden = true
@@ -94,6 +111,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func keyboardWillHide(_ notification: Notification) {
+        print("keyboardWillHide")
         if keyboardOnScreen {
             view.frame.origin.y += keyboardHeight(notification)
 //            logoImageView.isHidden = false
@@ -101,10 +119,12 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func keyboardDidShow(_ notification: Notification) {
+        print("keyboardDidShow")
         keyboardOnScreen = true
     }
     
     func keyboardDidHide(_ notification: Notification) {
+        print("keyboardDidHide")
         keyboardOnScreen = false
     }
     

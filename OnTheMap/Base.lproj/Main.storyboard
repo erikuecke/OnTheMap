@@ -119,7 +119,7 @@
         <!--Navigation Controller-->
         <scene sceneID="baK-eq-dLP">
             <objects>
-                <navigationController id="PM9-Xd-v9v" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" id="PM9-Xd-v9v" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vaF-m9-ahY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -152,11 +152,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d2i-Dz-3NX" id="A8q-4n-u3G">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TfK-40-RFq">
-                                                    <rect key="frame" x="54" y="0.0" width="306" height="43"/>
+                                                    <rect key="frame" x="54" y="0.0" width="306" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -225,7 +225,7 @@
         <!--On The Map-->
         <scene sceneID="dmC-rh-iCM">
             <objects>
-                <tabBarController id="l1q-49-lvF" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="l1q-49-lvF" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="Zba-Z7-8Sd">
                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="OfF-6z-uzI"/>
                         <rightBarButtonItems>

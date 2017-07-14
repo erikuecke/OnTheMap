@@ -60,6 +60,10 @@
 		9E0316791F16BD2600110259 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9E0316731F1699CA00110259 /* LogInViewController.swift */,
+				9E52C5E51F15906400AF5E83 /* PinMapViewController.swift */,
+				9E52C5E71F1590AD00AF5E83 /* ListTableViewController.swift */,
+				9E52C5D51F157C7C00AF5E83 /* ViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -94,13 +98,9 @@
 				9E0316781F16BD0200110259 /* Model */,
 				9E03167A1F16BD3800110259 /* View */,
 				9E0316791F16BD2600110259 /* Controller */,
-				9E52C5D51F157C7C00AF5E83 /* ViewController.swift */,
-				9E52C5E51F15906400AF5E83 /* PinMapViewController.swift */,
-				9E52C5E71F1590AD00AF5E83 /* ListTableViewController.swift */,
-				9E0316731F1699CA00110259 /* LogInViewController.swift */,
 				9E52C5D71F157C7C00AF5E83 /* Main.storyboard */,
-				9E52C5DA1F157C7C00AF5E83 /* Assets.xcassets */,
 				9E52C5DC1F157C7C00AF5E83 /* LaunchScreen.storyboard */,
+				9E52C5DA1F157C7C00AF5E83 /* Assets.xcassets */,
 				9E52C5DF1F157C7C00AF5E83 /* Info.plist */,
 			);
 			path = OnTheMap;

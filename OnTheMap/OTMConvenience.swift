@@ -37,7 +37,7 @@ extension OTMClient {
                     print(self.firstName! + " " + self.lastName!)
                     
                 })
-                
+                completionHandlerForAuth(success, errorString)
             } else {
                 completionHandlerForAuth(success, errorString)
             }
