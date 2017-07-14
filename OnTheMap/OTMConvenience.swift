@@ -54,7 +54,7 @@ extension OTMClient {
         let jsonBody = "{\"udacity\": {\"username\": \"\(OTMClient.User.Username)\", \"password\": \"\(OTMClient.User.Password)\"}}"
         
         /* 2. Make the request */
-        let _ = taskForPOSTMethod(OTMClient.UdacityMethods.PostSession, parameters: nil, jsonBody: jsonBody) { (results, error) in
+        let _ = taskForPOSTMethod(OTMClient.UdacityMethods.PostSession, parameters: nil, host: OTMClient.Constansts.UdacityHost , path: OTMClient.Constansts.UdacityPath, jsonBody: jsonBody) { (results, error) in
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
@@ -82,7 +82,7 @@ extension OTMClient {
         mutableMethed = substituteKeyInMethod(mutableMethed, key: "<user_id>", value: sessionKey)!
         var firstAndLast = [String]()
         /* 2. Make the request */
-        let _ = taskForGETMethod(mutableMethed, parameters: nil) { (results, error) in
+        let _ = taskForGETMethod(mutableMethed, parameters: nil, host: OTMClient.Constansts.UdacityHost , path: OTMClient.Constansts.UdacityPath) { (results, error) in
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {

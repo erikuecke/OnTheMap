@@ -19,9 +19,10 @@ extension OTMClient {
     struct Constansts {
         
         // MARK: URLs
-        static let UdacityScheme = "https"
+        static let Scheme = "https"
         static let UdacityHost = "www.udacity.com"
         static let UdacityPath = "/api"
+        
     }
     // MARK: Methods
     struct UdacityMethods {
@@ -29,6 +30,10 @@ extension OTMClient {
         // MARK: UdacityMethod
         static let PostSession = "/session"
         static let UserData = "/users/<user_id>"
+    }
+    
+    struct PARSEMethods {
+        
     }
     
     // MARK: JSON Response Keys
@@ -40,5 +45,12 @@ extension OTMClient {
         static let UdacityUser = "user"
         static let UdacityLastName = "last_name"
         static let UdacityFirstName = "first_name"
+        
+        // MARK: PARSE
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+        static let FirstName = "firstName"
+        static let LastName = "lastName"
+        static let MediaURL = "mediaURL"
     }
 }

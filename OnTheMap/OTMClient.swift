@@ -32,12 +32,12 @@ class OTMClient: NSObject {
     
     // MARK: GET
     
-    func taskForGETMethod(_ method: String, parameters: [String: AnyObject]?, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(_ method: String, parameters: [String: AnyObject]?, host: String, path: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* 1. Set the parameters */
         
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: otmURLFromParameters(parameters, withPathExtension: method))
+        let request = NSMutableURLRequest(url: otmURLFromParameters(parameters, withPathExtension: method, host: host, path: path))
         
         /* 4. Make the request */
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -84,13 +84,13 @@ class OTMClient: NSObject {
     
     // Mark: Post
     
-    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject]?, jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject]?, host: String, path: String, jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* 1. Set the parameters */
         
         
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: otmURLFromParameters(withPathExtension: method))
+        let request = NSMutableURLRequest(url: otmURLFromParameters(withPathExtension: method, host: host, path: path))
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -176,12 +176,12 @@ class OTMClient: NSObject {
     }
     
     // create a URL from parameters
-    private func otmURLFromParameters(_ parameters: [String:AnyObject]? = nil, withPathExtension: String? = nil) -> URL {
+    private func otmURLFromParameters(_ parameters: [String:AnyObject]? = nil, withPathExtension: String? = nil, host: String, path: String) -> URL {
         
         var components = URLComponents()
-        components.scheme = OTMClient.Constansts.UdacityScheme
-        components.host = OTMClient.Constansts.UdacityHost
-        components.path = OTMClient.Constansts.UdacityPath + (withPathExtension ?? "")
+        components.scheme = OTMClient.Constansts.Scheme
+        components.host = host
+        components.path = path + (withPathExtension ?? "")
         components.queryItems = [URLQueryItem]()
         if let parameters = parameters {
             for (key, value) in parameters {

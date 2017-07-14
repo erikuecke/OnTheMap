@@ -215,6 +215,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" image="icon_mapview-selected" id="i1Z-9P-Xtf"/>
                     <connections>
+                        <outlet property="mapView" destination="knK-lA-yCF" id="EYJ-fy-fjS"/>
                         <outlet property="view" destination="knK-lA-yCF" id="fxT-gX-E6w"/>
                     </connections>
                 </viewController>
