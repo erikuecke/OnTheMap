@@ -23,9 +23,10 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
 // **** Here is where I need to create the call Parse for the create an array of students. ****
         
         OTMClient.sharedInstance().getStudentLocations { (students, error) in
-            if students != nil {
+            if let students = students {
+                self.otmStudents = students
                 performUIUpdatesOnMain {
-                    self.otmStudents = students!
+                    
                     
                     // MKPointAnnotation student in students
                     var annotations = [MKPointAnnotation]()
@@ -63,6 +64,8 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                     // When the array is complete, we add the annotations to the map.
                     self.mapView.addAnnotations(annotations)
                 }
+            } else {
+                print(error ?? "empty error")
             }
         }
         

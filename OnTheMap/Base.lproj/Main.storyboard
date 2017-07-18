@@ -132,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="909" y="6"/>
         </scene>
-        <!--Item 2-->
+        <!--ListTableViewController-->
         <scene sceneID="slc-Ny-lMs">
             <objects>
-                <viewController id="zTL-HK-EUX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListTableViewController" id="zTL-HK-EUX" userLabel="ListTableViewController" customClass="ListTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8to-4A-I6r"/>
                         <viewControllerLayoutGuide type="bottom" id="Hev-Ms-nQe"/>
@@ -148,7 +148,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListTableCell" textLabel="TfK-40-RFq" imageView="zO8-ja-qUj" style="IBUITableViewCellStyleDefault" id="d2i-Dz-3NX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListTableCell" textLabel="TfK-40-RFq" detailTextLabel="ilh-wm-in6" style="IBUITableViewCellStyleSubtitle" id="d2i-Dz-3NX">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d2i-Dz-3NX" id="A8q-4n-u3G">
@@ -156,20 +156,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TfK-40-RFq">
-                                                    <rect key="frame" x="54" y="0.0" width="306" height="43.5"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_pin" id="zO8-ja-qUj">
-                                                    <rect key="frame" x="15" y="9" width="24" height="24"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ilh-wm-in6">
+                                                    <rect key="frame" x="15" y="25.5" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="zTL-HK-EUX" id="dPn-a5-0dw"/>
+                                    <outlet property="delegate" destination="zTL-HK-EUX" id="zc9-35-ETp"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,6 +188,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" image="icon_listview-selected" id="bNx-H2-WgM"/>
+                    <connections>
+                        <outlet property="listTableView" destination="FJt-Kg-u5p" id="YfL-X6-vBP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uR-p2-1VN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -308,7 +318,6 @@
         <image name="icon_addpin" width="24" height="24"/>
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
-        <image name="icon_pin" width="24" height="24"/>
         <image name="icon_refresh" width="24" height="24"/>
         <image name="icon_world" width="52" height="67"/>
         <image name="logo-u" width="62" height="62"/>
