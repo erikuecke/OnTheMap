@@ -15,6 +15,10 @@ extension OTMClient {
         static var Password = ""
     }
     
+    struct Students {
+        static var OTMStudentsArray: [OTMStudent] = []
+    }
+    
     
     struct Constansts {
         

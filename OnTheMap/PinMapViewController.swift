@@ -12,7 +12,7 @@ import MapKit
 
 class PinMapViewController: UIViewController, MKMapViewDelegate {
     
-    var otmStudents: [OTMStudent] = [OTMStudent]()
+//    var otmStudents: [OTMStudent] = [OTMStudent]()
     
     @IBOutlet weak var mapView: MKMapView!
 
@@ -24,14 +24,14 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         
         OTMClient.sharedInstance().getStudentLocations { (students, error) in
             if let students = students {
-                self.otmStudents = students
+                OTMClient.Students.OTMStudentsArray = students
                 performUIUpdatesOnMain {
                     
                     
                     // MKPointAnnotation student in students
                     var annotations = [MKPointAnnotation]()
                     
-                    for student in self.otmStudents {
+                    for student in OTMClient.Students.OTMStudentsArray {
                         
                         // Notice that the float values for CLLocationDegree values.
                         let lat: CLLocationDegrees

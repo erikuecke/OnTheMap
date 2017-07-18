@@ -12,7 +12,7 @@ import UIKit
 class ListTableViewController: UIViewController {
     
     // MARK: Properties
-    var otmStudents: [OTMStudent] = [OTMStudent]()
+//    var otmStudents: [OTMStudent] = [OTMStudent]()
     
     // MARK: Outlets
     
@@ -29,7 +29,7 @@ class ListTableViewController: UIViewController {
         super.viewWillAppear(animated)
         OTMClient.sharedInstance().getStudentLocations { (students, error) in
             if let students = students {
-                self.otmStudents = students
+                OTMClient.Students.OTMStudentsArray = students
                 performUIUpdatesOnMain {
                     self.listTableView.reloadData()
                 }
@@ -54,7 +54,7 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
         
         // Get cell type
         let cellID = "ListTableCell"
-        let student = otmStudents[indexPath.row]
+        let student = OTMClient.Students.OTMStudentsArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as UITableViewCell!
         
         // Set Cell defaults
@@ -66,13 +66,13 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return otmStudents.count
+        return OTMClient.Students.OTMStudentsArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     
-        let otmStudentInfo = otmStudents[indexPath.row]
+        let otmStudentInfo = OTMClient.Students.OTMStudentsArray[indexPath.row]
         if let linkToOpen = URL(string: otmStudentInfo.mediaURL!) {
             UIApplication.shared.open(linkToOpen, options: [:])
             
