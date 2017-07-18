@@ -12,6 +12,7 @@
 		9E03167C1F16CCBD00110259 /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167B1F16CCBD00110259 /* OTMClient.swift */; };
 		9E03167E1F16CDF800110259 /* OTMConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167D1F16CDF800110259 /* OTMConvenience.swift */; };
 		9E0316801F16D73800110259 /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167F1F16D73800110259 /* OTMConstants.swift */; };
+		9E1D47531F1EAC8A001C0BCC /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1D47521F1EAC8A001C0BCC /* GCDBlackBox.swift */; };
 		9E52C5D41F157C7C00AF5E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C5D31F157C7C00AF5E83 /* AppDelegate.swift */; };
 		9E52C5D61F157C7C00AF5E83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C5D51F157C7C00AF5E83 /* ViewController.swift */; };
 		9E52C5D91F157C7C00AF5E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E52C5D71F157C7C00AF5E83 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		9E03167B1F16CCBD00110259 /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
 		9E03167D1F16CDF800110259 /* OTMConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConvenience.swift; sourceTree = "<group>"; };
 		9E03167F1F16D73800110259 /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
+		9E1D47521F1EAC8A001C0BCC /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		9E52C5D01F157C7C00AF5E83 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E52C5D31F157C7C00AF5E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E52C5D51F157C7C00AF5E83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				9E52C5DC1F157C7C00AF5E83 /* LaunchScreen.storyboard */,
 				9E52C5DA1F157C7C00AF5E83 /* Assets.xcassets */,
 				9E52C5DF1F157C7C00AF5E83 /* Info.plist */,
+				9E1D47521F1EAC8A001C0BCC /* GCDBlackBox.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				9E52C5E61F15906400AF5E83 /* PinMapViewController.swift in Sources */,
 				9E03167C1F16CCBD00110259 /* OTMClient.swift in Sources */,
 				9E0316801F16D73800110259 /* OTMConstants.swift in Sources */,
+				9E1D47531F1EAC8A001C0BCC /* GCDBlackBox.swift in Sources */,
 				9E52C5D61F157C7C00AF5E83 /* ViewController.swift in Sources */,
 				9E52C5D41F157C7C00AF5E83 /* AppDelegate.swift in Sources */,
 				9E0316741F1699CA00110259 /* LogInViewController.swift in Sources */,

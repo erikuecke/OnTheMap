@@ -22,6 +22,8 @@ extension OTMClient {
         static let Scheme = "https"
         static let UdacityHost = "www.udacity.com"
         static let UdacityPath = "/api"
+        static let ParsePath = "/parse"
+        static let ParseHost = "parse.udacity.com"
         
     }
     // MARK: Methods
@@ -33,7 +35,13 @@ extension OTMClient {
     }
     
     struct PARSEMethods {
-        
+        static let StudentLocation = "/classes/StudentLocation"
+    }
+    
+    struct ParameterKeys {
+        static let Limit = "limit" // 100
+        static let Skip = "skip" // 400
+        static let Order = "order" // -udateAt
     }
     
     // MARK: JSON Response Keys
@@ -52,5 +60,8 @@ extension OTMClient {
         static let FirstName = "firstName"
         static let LastName = "lastName"
         static let MediaURL = "mediaURL"
+        
+        // MARK: RESULTS
+        static let Results = "results"
     }
 }

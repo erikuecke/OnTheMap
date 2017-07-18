@@ -61,11 +61,12 @@ class LoginViewController: UIViewController {
             OTMClient.User.Password = passwordTextField.text!
             
             OTMClient.sharedInstance().authenticateWithViewController(self) { (success, errorString) in
-                if success {
-                    print("Print from authenticateViewController")
-                    self.completeLogIn()
-                } else {
-                    print("authenticateWithViewController(self)")
+                performUIUpdatesOnMain {
+                    if success {
+                        self.completeLogIn()
+                    } else {
+                        self.displayError(errorString)
+                    }
                 }
             }
         }
@@ -82,6 +83,12 @@ class LoginViewController: UIViewController {
         self.debugTextLabel.text = ""
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
+    }
+    
+    func displayError(_ errorString: String?) {
+        if let errorString = errorString {
+            debugTextLabel.text = errorString
+        }
     }
     
     
