@@ -11,7 +11,8 @@ import UIKit
 
 class TabViewController: UITabBarController, UINavigationControllerDelegate {
     
-    
+    // Acitivity indicator
+    var activityIndicator = UIActivityIndicatorView()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,5 +37,33 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         }
     }
     
-       
+    @IBAction func reloadData(_ sender: Any) {
+        view.alpha = CGFloat(0.25)
+        activityIndicator.center = view.center
+        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        activityIndicator.color = UIColor.white
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        NotificationCenter.default.post(name: Notification.Name(rawValue:  "SuccessNotification"), object: self)
+        
+        // Get the updated data
+        OTMClient.sharedInstance().getStudentLocations { (students, error) in
+            if error == nil {
+                OTMClient.Students.OTMStudentsArray = students!
+                
+                performUIUpdatesOnMain {
+                    self.activityIndicator.stopAnimating()
+                    self.view.alpha = CGFloat(1.00)
+                    self.view.reloadInputViews()
+                    print("Reload worked")
+                }
+            } else {
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = CGFloat(1.00)
+                self.view.reloadInputViews()
+            }
+        }
+    }
+
+    
 }
