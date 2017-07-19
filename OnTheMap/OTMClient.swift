@@ -80,6 +80,9 @@ class OTMClient: NSObject {
 
     }
     
+    // DELETE SESSION
+    
+    
     
     
     // Mark: Post
@@ -191,7 +194,8 @@ class OTMClient: NSObject {
     }
     
     
-
+    // LOGOUT BUTTON
+    
     
     
     

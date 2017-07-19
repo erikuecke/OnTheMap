@@ -73,6 +73,35 @@ extension OTMClient {
         }
     }
     
+    // DELETING USER SESSION 
+    
+    func deleteUdacitySession(completionsHandlerForDeleteSession: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
+               completionsHandlerForDeleteSession(false, "Log out failed")
+            } else {
+                completionsHandlerForDeleteSession(true, nil)
+            }
+            
+            let range = Range(5..<data!.count)
+            let newData = data?.subdata(in: range)
+            print("\(String(describing: newData))")
+            
+        }
+        task.resume()
+    }
+    
     // MARK: GET USER DATA
     
     func getUdacityUser(_ sessionKey: String, completionHandlerForUserData: @escaping (_ success: Bool, _ firstAndLast: [String]?, _ errorString: String?) -> Void) {

@@ -15,11 +15,11 @@ extension OTMClient {
         static var Password = ""
     }
     
+    // PARSED STUDENTS ARRAY OF STRUCTS
     struct Students {
         static var OTMStudentsArray: [OTMStudent] = []
     }
-    
-    
+
     struct Constansts {
         
         // MARK: URLs

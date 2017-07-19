@@ -15,7 +15,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
 //    var otmStudents: [OTMStudent] = [OTMStudent]()
     
     @IBOutlet weak var mapView: MKMapView!
-
+    
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,46 +23,47 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
 // **** Here is where I need to create the call Parse for the create an array of students. ****
         
         OTMClient.sharedInstance().getStudentLocations { (students, error) in
-            if let students = students {
-                OTMClient.Students.OTMStudentsArray = students
-                performUIUpdatesOnMain {
+            if error == nil {
+                OTMClient.Students.OTMStudentsArray = students!
+                
+                // MKPointAnnotation student in students
+                var annotations = [MKPointAnnotation]()
+                
+                for student in OTMClient.Students.OTMStudentsArray {
                     
+                    // Notice that the float values for CLLocationDegree values.
+                    let lat: CLLocationDegrees
+                    let long: CLLocationDegrees
+                    let coordinate: CLLocationCoordinate2D
                     
-                    // MKPointAnnotation student in students
-                    var annotations = [MKPointAnnotation]()
+                    // Here we create the annotation and set its coordiate, title, and subtitle properties
+                    let annotation = MKPointAnnotation()
                     
-                    for student in OTMClient.Students.OTMStudentsArray {
-                        
-                        // Notice that the float values for CLLocationDegree values.
-                        let lat: CLLocationDegrees
-                        let long: CLLocationDegrees
-                        let coordinate: CLLocationCoordinate2D
+                    let first = student.firstName ?? "BLANK"
+                    let last = student.lastName ?? "BLANK"
+                    let mediaURL = student.mediaURL ?? "https://www.udacity.com"
+                    
+                    if let latitude = student.latitude, let longitude = student.longitude{
+                        lat = CLLocationDegrees(latitude)
+                        long = CLLocationDegrees(longitude)
+                        // The lat and long are used to create a CLLocationCoordinates2D instance.
+                        coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                         
                         // Here we create the annotation and set its coordiate, title, and subtitle properties
-                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = coordinate
+                        annotation.title = "\(first) \(last)"
+                        annotation.subtitle = mediaURL
                         
-                        let first = student.firstName ?? "BLANK"
-                        let last = student.lastName ?? "BLANK"
-                        let mediaURL = student.mediaURL ?? "https://www.udacity.com"
-                        
-                        if let latitude = student.latitude, let longitude = student.longitude{
-                            lat = CLLocationDegrees(latitude)
-                            long = CLLocationDegrees(longitude)
-                            // The lat and long are used to create a CLLocationCoordinates2D instance.
-                            coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                            
-                            // Here we create the annotation and set its coordiate, title, and subtitle properties
-                            annotation.coordinate = coordinate
-                            annotation.title = "\(first) \(last)"
-                            annotation.subtitle = mediaURL
-                            
-                            // Finally we place the annotation in an array of annotations.
-                            annotations.append(annotation)
-                        }
+                        // Finally we place the annotation in an array of annotations.
+                        annotations.append(annotation)
                     }
-                    
+
+                performUIUpdatesOnMain {
                     // When the array is complete, we add the annotations to the map.
                     self.mapView.addAnnotations(annotations)
+                                        }
+                    
+                  
                 }
             } else {
                 print(error ?? "empty error")

@@ -235,12 +235,20 @@
         <!--On The Map-->
         <scene sceneID="dmC-rh-iCM">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="l1q-49-lvF" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="l1q-49-lvF" customClass="TabViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="Zba-Z7-8Sd">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="OfF-6z-uzI"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="OfF-6z-uzI">
+                            <connections>
+                                <action selector="logOut:" destination="l1q-49-lvF" id="DyB-kK-2Xe"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" id="HJH-90-G6P"/>
-                            <barButtonItem image="icon_refresh" id="NLV-Lm-36k"/>
+                            <barButtonItem image="icon_refresh" id="NLV-Lm-36k">
+                                <connections>
+                                    <action selector="reloadData:" destination="l1q-49-lvF" id="jV6-m7-H67"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="UMa-Qv-KRu">

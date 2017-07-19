@@ -76,6 +76,7 @@ class LoginViewController: UIViewController {
     
     // Sign Up for account
     @IBAction func signUpPressed(_ sender: Any) {
+        // open sign up link
     }
     
     // Complete login and segue to first controller
