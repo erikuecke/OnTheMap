@@ -21,8 +21,7 @@ class ListTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // create and set the logout button
-        parent!.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(logout))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -38,10 +38,10 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
     }
     
     @IBAction func reloadData(_ sender: Any) {
-        view.alpha = CGFloat(0.25)
+        view.alpha = CGFloat(0.75)
         activityIndicator.center = view.center
         activityIndicator.activityIndicatorViewStyle = .whiteLarge
-        activityIndicator.color = UIColor.white
+        activityIndicator.color = UIColor.gray
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         NotificationCenter.default.post(name: Notification.Name(rawValue:  "SuccessNotification"), object: self)
