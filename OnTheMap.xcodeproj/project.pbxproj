@@ -19,6 +19,8 @@
 		9E52C5DE1F157C7C00AF5E83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E52C5DC1F157C7C00AF5E83 /* LaunchScreen.storyboard */; };
 		9E52C5E61F15906400AF5E83 /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C5E51F15906400AF5E83 /* PinMapViewController.swift */; };
 		9E52C5E81F1590AD00AF5E83 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C5E71F1590AD00AF5E83 /* ListTableViewController.swift */; };
+		9E584D491F201EC800E6995B /* EnterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E584D481F201EC800E6995B /* EnterLocationViewController.swift */; };
+		9E584D4B1F20217200E6995B /* OTMTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E584D4A1F20217200E6995B /* OTMTextFieldDelegate.swift */; };
 		9E6D0FBC1F2004D700593997 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6D0FBB1F2004D700593997 /* TabViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		9E52C5DF1F157C7C00AF5E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E52C5E51F15906400AF5E83 /* PinMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinMapViewController.swift; sourceTree = "<group>"; };
 		9E52C5E71F1590AD00AF5E83 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		9E584D481F201EC800E6995B /* EnterLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterLocationViewController.swift; sourceTree = "<group>"; };
+		9E584D4A1F20217200E6995B /* OTMTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTextFieldDelegate.swift; sourceTree = "<group>"; };
 		9E6D0FBB1F2004D700593997 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +73,8 @@
 				9E52C5E51F15906400AF5E83 /* PinMapViewController.swift */,
 				9E52C5E71F1590AD00AF5E83 /* ListTableViewController.swift */,
 				9E6D0FBB1F2004D700593997 /* TabViewController.swift */,
+				9E584D481F201EC800E6995B /* EnterLocationViewController.swift */,
+				9E584D4A1F20217200E6995B /* OTMTextFieldDelegate.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -188,7 +194,9 @@
 				9E0186E91F193C2C006B24A7 /* OTMStudent.swift in Sources */,
 				9E52C5E61F15906400AF5E83 /* PinMapViewController.swift in Sources */,
 				9E03167C1F16CCBD00110259 /* OTMClient.swift in Sources */,
+				9E584D491F201EC800E6995B /* EnterLocationViewController.swift in Sources */,
 				9E0316801F16D73800110259 /* OTMConstants.swift in Sources */,
+				9E584D4B1F20217200E6995B /* OTMTextFieldDelegate.swift in Sources */,
 				9E1D47531F1EAC8A001C0BCC /* GCDBlackBox.swift in Sources */,
 				9E52C5D41F157C7C00AF5E83 /* AppDelegate.swift in Sources */,
 				9E0316741F1699CA00110259 /* LogInViewController.swift in Sources */,

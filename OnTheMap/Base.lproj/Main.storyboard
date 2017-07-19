@@ -243,7 +243,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="icon_addpin" id="HJH-90-G6P"/>
+                            <barButtonItem image="icon_addpin" id="HJH-90-G6P">
+                                <connections>
+                                    <action selector="addStudentLocation:" destination="l1q-49-lvF" id="0Xc-WF-XP3"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="icon_refresh" id="NLV-Lm-36k">
                                 <connections>
                                     <action selector="reloadData:" destination="l1q-49-lvF" id="jV6-m7-H67"/>
@@ -268,7 +272,7 @@
         <!--View Controller-->
         <scene sceneID="HV1-Xs-Rek">
             <objects>
-                <viewController storyboardIdentifier="AddLocationViewController" id="YCa-fN-uUW" customClass="ViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterLocationViewController" id="YCa-fN-uUW" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S5Y-Go-2xb"/>
                         <viewControllerLayoutGuide type="bottom" id="9Bj-hK-10T"/>

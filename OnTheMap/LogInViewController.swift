@@ -27,6 +27,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         // For Textfield/Keyboard
         subscribeToNotification(.UIKeyboardWillShow, selector: #selector(keyboardWillShow))
         subscribeToNotification(.UIKeyboardWillHide, selector: #selector(keyboardWillHide))
@@ -102,11 +105,7 @@ extension LoginViewController: UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        return true
-    }
+    
     
     // MARK: Show/Hide Keyboard
     
@@ -151,6 +150,12 @@ extension LoginViewController: UITextFieldDelegate {
     @IBAction func userDidTapView(_ sender: AnyObject) {
         resignIfFirstResponder(emailTextField)
         resignIfFirstResponder(passwordTextField)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
     }
 }
 

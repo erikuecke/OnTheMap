@@ -65,5 +65,13 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         }
     }
 
+    @IBAction func addStudentLocation(_ sender: Any) {
+        
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") {
+            present(controller, animated: true, completion: nil)
+        }
+        
+    }
+    
     
 }
