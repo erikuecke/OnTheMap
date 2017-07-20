@@ -12,6 +12,7 @@
 		9E03167C1F16CCBD00110259 /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167B1F16CCBD00110259 /* OTMClient.swift */; };
 		9E03167E1F16CDF800110259 /* OTMConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167D1F16CDF800110259 /* OTMConvenience.swift */; };
 		9E0316801F16D73800110259 /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03167F1F16D73800110259 /* OTMConstants.swift */; };
+		9E12BEC51F215E88004BEB8F /* SubmitLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E12BEC41F215E88004BEB8F /* SubmitLocationViewController.swift */; };
 		9E1D47531F1EAC8A001C0BCC /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1D47521F1EAC8A001C0BCC /* GCDBlackBox.swift */; };
 		9E52C5D41F157C7C00AF5E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52C5D31F157C7C00AF5E83 /* AppDelegate.swift */; };
 		9E52C5D91F157C7C00AF5E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E52C5D71F157C7C00AF5E83 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		9E03167B1F16CCBD00110259 /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
 		9E03167D1F16CDF800110259 /* OTMConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConvenience.swift; sourceTree = "<group>"; };
 		9E03167F1F16D73800110259 /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
+		9E12BEC41F215E88004BEB8F /* SubmitLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitLocationViewController.swift; sourceTree = "<group>"; };
 		9E1D47521F1EAC8A001C0BCC /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		9E52C5D01F157C7C00AF5E83 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E52C5D31F157C7C00AF5E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				9E6D0FBB1F2004D700593997 /* TabViewController.swift */,
 				9E584D481F201EC800E6995B /* EnterLocationViewController.swift */,
 				9E584D4A1F20217200E6995B /* OTMTextFieldDelegate.swift */,
+				9E12BEC41F215E88004BEB8F /* SubmitLocationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				9E52C5D41F157C7C00AF5E83 /* AppDelegate.swift in Sources */,
 				9E0316741F1699CA00110259 /* LogInViewController.swift in Sources */,
 				9E52C5E81F1590AD00AF5E83 /* ListTableViewController.swift in Sources */,
+				9E12BEC51F215E88004BEB8F /* SubmitLocationViewController.swift in Sources */,
 				9E6D0FBC1F2004D700593997 /* TabViewController.swift in Sources */,
 				9E03167E1F16CDF800110259 /* OTMConvenience.swift in Sources */,
 			);

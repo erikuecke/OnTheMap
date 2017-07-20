@@ -78,6 +78,8 @@ extension OTMClient {
         static var OTMStudentFirstName = String()
         static var OTMStudentLastName = String()
         static var PostedLocation = Bool()
+        static var OTMStudentAddress = String()
+        static var OTMStudenURL = String()
     }
     
     

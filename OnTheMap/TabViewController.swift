@@ -44,7 +44,7 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         activityIndicator.color = UIColor.gray
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-        NotificationCenter.default.post(name: Notification.Name(rawValue:  "SuccessNotification"), object: self)
+      //  NotificationCenter.default.post(name: Notification.Name(rawValue:  "SuccessNotification"), object: self)
         
         // Get the updated data
         OTMClient.sharedInstance().getStudentLocations { (students, error) in
@@ -87,12 +87,19 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         OTMClient.sharedInstance().getOneStudentLocation { (success, student, errorString) in
             if success {
                 if student != nil, student?.latitude != nil, student?.longitude != nil {
-                    OTMClient.Student.PostedLocation = true
                     
+                    OTMClient.Student.PostedLocation = true
                     performUIUpdatesOnMain {
                         self.overWriteAlert()
                     }
                     print("get oneStudentlocation is true")
+                } else {
+                    OTMClient.Student.PostedLocation = false
+                    performUIUpdatesOnMain {
+                        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") {
+                            self.present(controller, animated: true, completion: nil)
+                        }
+                    }
                 }
             }
         }
@@ -106,9 +113,8 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         alert.addAction(cancelAction)
         
         let confirmAction = UIAlertAction(title: "OverWrite", style: .default) { (action) in
-            
-            
-            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") {
+
+            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "AddNavController") {
                 self.present(controller, animated: true, completion: nil)
                 
             }
@@ -116,7 +122,6 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         alert.addAction(confirmAction)
         
         present(alert, animated: true, completion: nil)
-        
     }
     
     

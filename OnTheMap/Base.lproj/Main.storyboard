@@ -282,7 +282,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="EmG-NV-jFA">
-                                <rect key="frame" x="16" y="127" width="343" height="185"/>
+                                <rect key="frame" x="16" y="120" width="343" height="486"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="tHv-wP-tMu">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="62"/>
@@ -290,40 +290,101 @@
                                             <constraint firstAttribute="height" constant="62" id="CuP-wV-zac"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KoV-sv-sss">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KoV-sv-sss">
                                         <rect key="frame" x="0.0" y="71" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51t-Or-xm1">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51t-Or-xm1">
                                         <rect key="frame" x="0.0" y="110" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ju-f5-pEa">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ju-f5-pEa">
                                         <rect key="frame" x="0.0" y="149" width="343" height="36"/>
                                         <color key="backgroundColor" red="0.39742133909999999" green="0.66978623230000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                         <state key="normal" title="FIND LOCATION">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="findLocationAddURL:" destination="YCa-fN-uUW" eventType="touchUpInside" id="AII-Gw-33e"/>
+                                        </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="x5i-7Q-9CF">
+                                        <rect key="frame" x="0.0" y="194" width="343" height="292"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yd-C2-bVN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Add Location" id="FFu-Ac-W9G"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="EmG-NV-jFA" secondAttribute="trailing" id="5G3-gb-yc8"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="EmG-NV-jFA" secondAttribute="leading" id="8hF-O0-ZsY"/>
-                            <constraint firstItem="EmG-NV-jFA" firstAttribute="top" secondItem="S5Y-Go-2xb" secondAttribute="bottom" constant="107" id="tkb-zl-BTh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="EmG-NV-jFA" secondAttribute="leading" id="NbN-cl-Fez"/>
+                            <constraint firstItem="9Bj-hK-10T" firstAttribute="top" secondItem="EmG-NV-jFA" secondAttribute="bottom" constant="61" id="YCf-QV-2GY"/>
+                            <constraint firstItem="EmG-NV-jFA" firstAttribute="top" secondItem="S5Y-Go-2xb" secondAttribute="bottom" constant="100" id="ndv-HO-Knx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EmG-NV-jFA" secondAttribute="trailing" id="vmi-Jk-Fv8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="RBs-bx-cRd"/>
+                    <connections>
+                        <outlet property="debugTextView" destination="x5i-7Q-9CF" id="tol-0j-DcP"/>
+                        <outlet property="locationTextField" destination="KoV-sv-sss" id="qXp-cD-zIh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIm-uR-Rdz" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3410" y="35"/>
+            <point key="canvasLocation" x="3478" y="2"/>
+        </scene>
+        <!--Submit Location View Controller-->
+        <scene sceneID="31N-O7-G9S">
+            <objects>
+                <viewController storyboardIdentifier="SubmitLocationViewController" id="NxO-E8-D80" customClass="SubmitLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kYA-jb-I4E"/>
+                        <viewControllerLayoutGuide type="bottom" id="J64-6V-t7r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pd1-ue-m9w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5W-cm-HX1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Add Location" id="re6-Lj-BdJ"/>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H7X-0W-hVK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qsw-fV-Zb7">
+                                <rect key="frame" x="16" y="617" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="FINISH">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gDY-Rl-LmX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G8A-7b-rK1" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4264.8000000000002" y="1.3493253373313345"/>
         </scene>
     </scenes>
     <resources>
