@@ -67,9 +67,55 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
 
     @IBAction func addStudentLocation(_ sender: Any) {
         
-        if let controller = storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") {
-            present(controller, animated: true, completion: nil)
+//        1) Get specific student location request for AddStudentLocation button.
+//        2) Compare with Session First and Last name to see if already entered.
+//        3) If Student already exists, present alert modal to see if wants to overwrite.
+//        4) If yes remove modal, segue to enterlocation view.
+//        5) if cancel remove modal stay on present view.
+
+        
+//        I) 8. Parse Api: Geting a student locatoin
+//        a) unsuccessful - segue to enter location. - 9. Posting a student location.
+//        b) Successful
+//          - Get object id for 10.PUTing Student location.
+//          - Present modal to see if wants to overwrite. if yes segue -
+        
+//        II) On EnterLocationViewController
+//          a) If NOT overwriting 9. Posting a student location
+//          b) If Overwriting 10. Parse API - PUTing Student location.
+        
+        OTMClient.sharedInstance().getOneStudentLocation { (success, student, errorString) in
+            if success {
+                if student != nil, student?.latitude != nil, student?.longitude != nil {
+                    OTMClient.Student.PostedLocation = true
+                    
+                    performUIUpdatesOnMain {
+                        self.overWriteAlert()
+                    }
+                    print("get oneStudentlocation is true")
+                }
+            }
         }
+        
+    }
+    
+    func overWriteAlert() {
+        let message = "User \"\(OTMClient.Student.OTMStudentFirstName) \(OTMClient.Student.OTMStudentLastName)\" Has Already Posted a Student Location. Would You Like to Overwrite Their Locaiton?"
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        let confirmAction = UIAlertAction(title: "OverWrite", style: .default) { (action) in
+            
+            
+            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") {
+                self.present(controller, animated: true, completion: nil)
+                
+            }
+        }
+        alert.addAction(confirmAction)
+        
+        present(alert, animated: true, completion: nil)
         
     }
     

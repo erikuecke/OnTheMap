@@ -45,20 +45,22 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                         let last = student.lastName ?? "BLANK"
                         let mediaURL = student.mediaURL ?? "https://www.udacity.com"
                         
-                        if let latitude = student.latitude, let longitude = student.longitude {
-                            lat = CLLocationDegrees(latitude)
-                            long = CLLocationDegrees(longitude)
-                            // The lat and long are used to create a CLLocationCoordinates2D instance.
-                            coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                            
-                            // Here we create the annotation and set its coordiate, title, and subtitle properties
-                            annotation.coordinate = coordinate
-                            annotation.title = "\(first) \(last)"
-                            annotation.subtitle = mediaURL
-                            
-                            // Finally we place the annotation in an array of annotations.
-                            annotations.append(annotation)
-                        }
+                        let latitude = student.latitude ?? 0
+                        let longitude = student.longitude ?? 0
+                        
+                        lat = CLLocationDegrees(latitude)
+                        long = CLLocationDegrees(longitude)
+                        // The lat and long are used to create a CLLocationCoordinates2D instance.
+                        coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                        
+                        // Here we create the annotation and set its coordiate, title, and subtitle properties
+                        annotation.coordinate = coordinate
+                        annotation.title = "\(first) \(last)"
+                        annotation.subtitle = mediaURL
+                        
+                        // Finally we place the annotation in an array of annotations.
+                        annotations.append(annotation)
+                        
                     }
                     
                     performUIUpdatesOnMain {

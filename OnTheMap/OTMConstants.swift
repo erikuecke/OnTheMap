@@ -15,11 +15,6 @@ extension OTMClient {
         static var Password = ""
     }
     
-    // PARSED STUDENTS ARRAY OF STRUCTS
-    struct Students {
-        static var OTMStudentsArray: [OTMStudent] = []
-    }
-
     struct Constansts {
         
         // MARK: URLs
@@ -46,6 +41,7 @@ extension OTMClient {
         static let Limit = "limit" // 100
         static let Skip = "skip" // 400
         static let Order = "order" // -udateAt
+        static let Where = "where" // {"uniqueKey":"1234"}
     }
     
     // MARK: JSON Response Keys
@@ -53,7 +49,7 @@ extension OTMClient {
         
         // MARK: Udacity
         static let UdacityAccount = "account"
-        static let UdacitySessionKey = "key"
+        static let UdacityUserKey = "key"
         static let UdacityUser = "user"
         static let UdacityLastName = "last_name"
         static let UdacityFirstName = "first_name"
@@ -64,8 +60,26 @@ extension OTMClient {
         static let FirstName = "firstName"
         static let LastName = "lastName"
         static let MediaURL = "mediaURL"
+        static let UniqueKey = "uniqueKey"
+        static let ObjectID = "objectId"
+        static let MapString = "mapString"
         
         // MARK: RESULTS
         static let Results = "results"
     }
+    
+    // PARSED STUDENTS ARRAY OF STRUCTS
+    struct Students {
+        static var OTMStudentsArray: [OTMStudent] = []
+    }
+    
+    struct Student {
+        static var OTMStudentKey = String()
+        static var OTMStudentFirstName = String()
+        static var OTMStudentLastName = String()
+        static var PostedLocation = Bool()
+    }
+    
+    
+    
 }

@@ -269,10 +269,10 @@
             </objects>
             <point key="canvasLocation" x="1671" y="3"/>
         </scene>
-        <!--View Controller-->
+        <!--Enter Location View Controller-->
         <scene sceneID="HV1-Xs-Rek">
             <objects>
-                <viewController storyboardIdentifier="EnterLocationViewController" id="YCa-fN-uUW" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterLocationViewController" id="YCa-fN-uUW" customClass="EnterLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S5Y-Go-2xb"/>
                         <viewControllerLayoutGuide type="bottom" id="9Bj-hK-10T"/>
