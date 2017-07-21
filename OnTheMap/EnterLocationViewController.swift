@@ -114,7 +114,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
             OTMClient.Student.OTMStudentAnnotation = annotation
             OTMClient.Student.OTMStudentLatitude = latitude!
             OTMClient.Student.OTMStudentLongitude = longitude!
-            OTMClient.Student.OTMStudentLocTextField = (addressArray?[0])!
+            OTMClient.Student.OTMStudentMapString = (addressArray?[0])!
             print(OTMClient.Student.OTMStudentAnnotation)
             print(OTMClient.Student.OTMStudentLatitude)
             print(OTMClient.Student.OTMStudentLongitude)
@@ -126,14 +126,6 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
                 self.view.alpha = CGFloat(1.00)
                 self.navigationController?.pushViewController(controller, animated: true)
             }
-            
-        }
-        
-        
-        if OTMClient.Student.PostedLocation {
-            // Put Method for location
-        } else {
-            // Post method for location
         }
     }
     

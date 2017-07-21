@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+
 extension OTMClient {
     
     // MARK: Authentication (GET) Methods
@@ -184,6 +186,56 @@ extension OTMClient {
         completionHandlerForGetOne(false, nil, NSError(domain: "getStudent location parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getStudentLocations"]))
         }
         }
+        }
+    }
+    
+    // POSTING STUDENT LOCATION WITH PARSE
+    func postStudentLocation(completionHandlerForPostStudent: @escaping (_ success: Bool, _ objectID: String?, _ error: NSError?) -> Void) {
+        
+        /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
+        
+        /* 2. Make the request */
+        let _ = parseTaskForPostPutMethod(OTMClient.PARSEMethods.StudentLocation, parameters: nil, host: OTMClient.Constansts.ParseHost, path: OTMClient.Constansts.ParsePath, httpMethod: "POST") { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandlerForPostStudent(false, nil, error)
+            } else {
+                
+                if let objectID = results?[OTMClient.JSONResponseKeys.ObjectId] as? String {
+                    
+                    completionHandlerForPostStudent(true, objectID, nil)
+                    
+                } else {
+                    completionHandlerForPostStudent(false, nil, NSError(domain: "post Student location parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postStudentLocations"]))
+                }
+            }
+        }
+    }
+    
+    // PUTTING STUDENT LOCATION WITH PARSE
+    func putStudentLocation(completionHandlerForPutStudent: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+        
+        /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
+        let putMethod = "\(OTMClient.PARSEMethods.StudentLocation)/\(OTMClient.Student.OTMStudentObjectId)"
+        
+        /* 2. Make the request */
+        let _ = parseTaskForPostPutMethod(putMethod, parameters: nil, host: OTMClient.Constansts.ParseHost, path: OTMClient.Constansts.ParsePath, httpMethod: "PUT") { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandlerForPutStudent(false, error)
+            } else {
+                
+                if results != nil {
+                    
+                    completionHandlerForPutStudent(true, nil)
+                    
+                } else {
+                    completionHandlerForPutStudent(false,NSError(domain: "post Student location parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postStudentLocations"]))
+                }
+            }
         }
     }
 

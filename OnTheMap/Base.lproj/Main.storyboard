@@ -361,6 +361,9 @@
                                 <state key="normal" title="FINISH">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitLocation:" destination="NxO-E8-D80" eventType="touchUpInside" id="0IF-2S-Tbv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -374,6 +377,9 @@
                     <navigationItem key="navigationItem" title="Submit Location" id="gDY-Rl-LmX">
                         <barButtonItem key="backBarButtonItem" title="Enter Location" id="tld-GN-10W"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="H7X-0W-hVK" id="4aG-KV-fOs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8A-7b-rK1" sceneMemberID="firstResponder"/>
             </objects>

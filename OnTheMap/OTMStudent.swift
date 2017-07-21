@@ -18,7 +18,7 @@ struct OTMStudent {
     let lastName: String?
     let mediaURL: String?
     let uniquekey: String?
-    let objectID: String?
+    let objectId: String?
     let mapString: String?
     
     // MARK: Initializers
@@ -31,7 +31,7 @@ struct OTMStudent {
         lastName = dictionary[OTMClient.JSONResponseKeys.LastName] as? String
         mediaURL = dictionary[OTMClient.JSONResponseKeys.MediaURL] as? String
         uniquekey = dictionary[OTMClient.JSONResponseKeys.UniqueKey] as? String
-        objectID = dictionary[OTMClient.JSONResponseKeys.ObjectID] as? String
+        objectId = dictionary[OTMClient.JSONResponseKeys.ObjectID] as? String
         mapString = dictionary[OTMClient.JSONResponseKeys.MapString] as? String
     }
     

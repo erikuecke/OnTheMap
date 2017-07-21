@@ -64,6 +64,7 @@ extension OTMClient {
         static let UniqueKey = "uniqueKey"
         static let ObjectID = "objectId"
         static let MapString = "mapString"
+        static let ObjectId = "objectId"
         
         // MARK: RESULTS
         static let Results = "results"
@@ -84,7 +85,8 @@ extension OTMClient {
         static var OTMStudentAnnotation = MKPointAnnotation()
         static var OTMStudentLatitude = CLLocationDegrees()
         static var OTMStudentLongitude = CLLocationDegrees()
-        static var OTMStudentLocTextField = String()
+        static var OTMStudentMapString = String()
+        static var OTMStudentObjectId = String()
     }
     
 

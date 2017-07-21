@@ -67,28 +67,14 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
 
     @IBAction func addStudentLocation(_ sender: Any) {
         
-//        1) Get specific student location request for AddStudentLocation button.
-//        2) Compare with Session First and Last name to see if already entered.
-//        3) If Student already exists, present alert modal to see if wants to overwrite.
-//        4) If yes remove modal, segue to enterlocation view.
-//        5) if cancel remove modal stay on present view.
 
-        
-//        I) 8. Parse Api: Geting a student locatoin
-//        a) unsuccessful - segue to enter location. - 9. Posting a student location.
-//        b) Successful
-//          - Get object id for 10.PUTing Student location.
-//          - Present modal to see if wants to overwrite. if yes segue -
-        
-//        II) On EnterLocationViewController
-//          a) If NOT overwriting 9. Posting a student location
-//          b) If Overwriting 10. Parse API - PUTing Student location.
-        
+        // Get single student locatino if available.
         OTMClient.sharedInstance().getOneStudentLocation { (success, student, errorString) in
             if success {
-                if student != nil, student?.latitude != nil, student?.longitude != nil {
+                if student != nil, student?.latitude != nil, student?.longitude != nil, student?.objectId != nil {
                     
                     OTMClient.Student.PostedLocation = true
+                    OTMClient.Student.OTMStudentObjectId = (student?.objectId)!
                     performUIUpdatesOnMain {
                         self.overWriteAlert()
                     }
