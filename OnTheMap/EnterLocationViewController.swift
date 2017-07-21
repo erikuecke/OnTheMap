@@ -43,6 +43,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
 
     
     override func viewDidLoad() {
+        print("viewDidLoad()")
         locationTextField.text = ""
         websiteTextField.text = ""
         debugTextView.text = ""
@@ -71,9 +72,11 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        let annotation = MKAnnotation()
+//        let annotation = MKAnnotation()
         // Start Geocoder
         let geocoder = CLGeocoder()
+        
+        
         
         // Start Animation process
         view.alpha = CGFloat(0.75)
@@ -84,7 +87,16 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         activityIndicator.startAnimating()
         
         
-        
+        // Find Location of student entry.
+        geocoder.geocodeAddressString(OTMClient.Student.OTMStudentAddress) { (result, error) in
+            
+            if error != nil {
+                self.showAddressError()
+                return
+            }
+            
+            print(result!)
+        }
         
         
         if OTMClient.Student.PostedLocation {

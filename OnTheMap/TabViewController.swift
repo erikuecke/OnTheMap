@@ -114,7 +114,7 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         
         let confirmAction = UIAlertAction(title: "OverWrite", style: .default) { (action) in
 
-            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "AddNavController") {
+            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") {
                 self.present(controller, animated: true, completion: nil)
                 
             }

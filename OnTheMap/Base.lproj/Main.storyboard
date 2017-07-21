@@ -340,6 +340,7 @@
                     <connections>
                         <outlet property="debugTextView" destination="x5i-7Q-9CF" id="tol-0j-DcP"/>
                         <outlet property="locationTextField" destination="KoV-sv-sss" id="qXp-cD-zIh"/>
+                        <outlet property="websiteTextField" destination="51t-Or-xm1" id="cGE-il-2iz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIm-uR-Rdz" sceneMemberID="firstResponder"/>
