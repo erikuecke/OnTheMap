@@ -65,7 +65,7 @@ extension OTMClient {
         let _ = taskForPOSTMethod(OTMClient.UdacityMethods.PostSession, parameters: nil, host: OTMClient.Constansts.UdacityHost , path: OTMClient.Constansts.UdacityPath, jsonBody: jsonBody) { (results, error) in
             
             /* 3. Send the desired value(s) to completion handler */
-            if let error = error {
+            if error != nil {
                 completionHandlerForPostSession(false, nil, "Login Failed (Session ID).")
                 
             } else {
@@ -121,7 +121,7 @@ extension OTMClient {
         let _ = taskForGETMethod(mutableMethed, parameters: nil, host: OTMClient.Constansts.UdacityHost , path: OTMClient.Constansts.UdacityPath) { (results, error) in
             
             /* 3. Send the desired value(s) to completion handler */
-            if let error = error {
+            if error != nil {
                 completionHandlerForUserData(false, nil, "Login Failed (getUdacityUser).")
             } else {
                 if let results = results?[OTMClient.JSONResponseKeys.UdacityUser] as? [String: AnyObject] {

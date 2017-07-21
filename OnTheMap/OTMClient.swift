@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-class OTMClient: NSObject {
+class OTMClient: NSObject  {
     
     // MARK: Properties
     

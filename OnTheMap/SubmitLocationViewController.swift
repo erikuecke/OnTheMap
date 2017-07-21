@@ -13,4 +13,11 @@ import MapKit
 class SubmitLocationViewController: UIViewController {
     // code
     
+    override func viewDidLoad() {
+        navigationItem.title = "Submit locaiton"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAddEnterLocation))
+    }
+    
+    
+    
 }

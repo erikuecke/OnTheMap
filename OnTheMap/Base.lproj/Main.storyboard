@@ -303,7 +303,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ju-f5-pEa">
-                                        <rect key="frame" x="0.0" y="149" width="343" height="36"/>
+                                        <rect key="frame" x="0.0" y="149" width="343" height="129"/>
                                         <color key="backgroundColor" red="0.39742133909999999" green="0.66978623230000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                         <state key="normal" title="FIND LOCATION">
@@ -314,19 +314,12 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="x5i-7Q-9CF">
-                                        <rect key="frame" x="0.0" y="194" width="343" height="292"/>
+                                        <rect key="frame" x="0.0" y="287" width="343" height="199"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                             </stackView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yd-C2-bVN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Add Location" id="FFu-Ac-W9G"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -336,7 +329,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="EmG-NV-jFA" secondAttribute="trailing" id="vmi-Jk-Fv8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="RBs-bx-cRd"/>
                     <connections>
                         <outlet property="debugTextView" destination="x5i-7Q-9CF" id="tol-0j-DcP"/>
                         <outlet property="locationTextField" destination="KoV-sv-sss" id="qXp-cD-zIh"/>
@@ -345,9 +337,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIm-uR-Rdz" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3478" y="2"/>
+            <point key="canvasLocation" x="3738" y="74"/>
         </scene>
-        <!--Submit Location View Controller-->
+        <!--Submit Location-->
         <scene sceneID="31N-O7-G9S">
             <objects>
                 <viewController storyboardIdentifier="SubmitLocationViewController" id="NxO-E8-D80" customClass="SubmitLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -359,16 +351,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5W-cm-HX1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Add Location" id="re6-Lj-BdJ"/>
-                                </items>
-                            </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H7X-0W-hVK">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H7X-0W-hVK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qsw-fV-Zb7">
                                 <rect key="frame" x="16" y="617" width="343" height="30"/>
@@ -380,12 +364,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="H7X-0W-hVK" firstAttribute="leading" secondItem="pd1-ue-m9w" secondAttribute="leadingMargin" constant="-16" id="KIs-Rt-9bE"/>
+                            <constraint firstItem="J64-6V-t7r" firstAttribute="top" secondItem="H7X-0W-hVK" secondAttribute="bottom" id="W6s-XM-nLi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H7X-0W-hVK" secondAttribute="trailing" constant="-16" id="lkG-Sx-iq4"/>
+                            <constraint firstItem="H7X-0W-hVK" firstAttribute="top" secondItem="kYA-jb-I4E" secondAttribute="bottom" constant="-20" id="sTc-9Y-hN3"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gDY-Rl-LmX"/>
+                    <navigationItem key="navigationItem" title="Submit Location" id="gDY-Rl-LmX">
+                        <barButtonItem key="backBarButtonItem" title="Enter Location" id="tld-GN-10W"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8A-7b-rK1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4264.8000000000002" y="1.3493253373313345"/>
+            <point key="canvasLocation" x="4621.6000000000004" y="74.212893553223395"/>
         </scene>
     </scenes>
     <resources>

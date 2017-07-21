@@ -49,6 +49,15 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         
         locationTextField.delegate = self
         websiteTextField.delegate = self
+        
+        navigationItem.title = "Enter Location"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAddEnterLocation))
+        
+    }
+    
+    // Cancel adding and entersing button method
+    func cancelAddEnterLocation() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func findLocationAddURL(_ sender: Any) {
@@ -110,13 +119,12 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
             print(OTMClient.Student.OTMStudentLatitude)
             print(OTMClient.Student.OTMStudentLongitude)
             
-            
-            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "SubmitLocationViewController") {
-                performUIUpdatesOnMain {
-                    self.activityIndicator.stopAnimating()
-                    self.view.alpha = CGFloat(1.00)
-                    self.present(controller, animated: true, completion: nil)
-                }
+            // pushing to next controller
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "SubmitLocationViewController") as! SubmitLocationViewController
+            performUIUpdatesOnMain {
+                self.activityIndicator.stopAnimating()
+                self.view.alpha = CGFloat(1.00)
+                self.navigationController?.pushViewController(controller, animated: true)
             }
             
         }

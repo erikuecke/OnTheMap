@@ -76,8 +76,8 @@
 				9E52C5E71F1590AD00AF5E83 /* ListTableViewController.swift */,
 				9E6D0FBB1F2004D700593997 /* TabViewController.swift */,
 				9E584D481F201EC800E6995B /* EnterLocationViewController.swift */,
-				9E584D4A1F20217200E6995B /* OTMTextFieldDelegate.swift */,
 				9E12BEC41F215E88004BEB8F /* SubmitLocationViewController.swift */,
+				9E584D4A1F20217200E6995B /* OTMTextFieldDelegate.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

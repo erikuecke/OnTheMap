@@ -95,8 +95,11 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
                 } else {
                     OTMClient.Student.PostedLocation = false
                     performUIUpdatesOnMain {
-                        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") {
-                            self.present(controller, animated: true, completion: nil)
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") as! EnterLocationViewController
+                        performUIUpdatesOnMain {
+                            
+                            self.navigationController?.pushViewController(controller, animated: true)
+                            
                         }
                     }
                 }
@@ -113,10 +116,14 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         
         let confirmAction = UIAlertAction(title: "OverWrite", style: .default) { (action) in
 
-            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") {
-                self.present(controller, animated: true, completion: nil)
-                
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") as! EnterLocationViewController
+            
+            performUIUpdatesOnMain {
+                self.navigationController?.pushViewController(controller, animated: true)
             }
+            
+                
+            
         }
         alert.addAction(confirmAction)
         
