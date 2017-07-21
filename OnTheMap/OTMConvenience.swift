@@ -37,7 +37,7 @@ extension OTMClient {
                         if results != nil {
                             if let firstname = results?["first_name"] {
                                 OTMClient.Student.OTMStudentFirstName = firstname as! String
-                                print("yo yo yo\(firstname)")
+                               
                             }
                             if let lastname = results?["last_name"] {
                                 OTMClient.Student.OTMStudentLastName = lastname as! String
@@ -66,7 +66,6 @@ extension OTMClient {
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
-                print(error)
                 completionHandlerForPostSession(false, nil, "Login Failed (Session ID).")
                 
             } else {
@@ -123,7 +122,6 @@ extension OTMClient {
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
-                print(error)
                 completionHandlerForUserData(false, nil, "Login Failed (getUdacityUser).")
             } else {
                 if let results = results?[OTMClient.JSONResponseKeys.UdacityUser] as? [String: AnyObject] {
@@ -167,7 +165,6 @@ extension OTMClient {
         
         /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
         let whereValue = "{\"uniqueKey\":\"\(OTMClient.Student.OTMStudentKey)\"}"
-        print(whereValue)
         let parameters = [OTMClient.ParameterKeys.Where: whereValue]
         
         /* 2. Make the request */

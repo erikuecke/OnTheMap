@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 extension OTMClient {
     
@@ -80,6 +81,10 @@ extension OTMClient {
         static var PostedLocation = Bool()
         static var OTMStudentAddress = String()
         static var OTMStudenURL = String()
+        static var OTMStudentAnnotation = MKPointAnnotation()
+        static var OTMStudentLatitude = CLLocationDegrees()
+        static var OTMStudentLongitude = CLLocationDegrees()
+        static var OTMStudentLocTextField = String()
     }
     
     

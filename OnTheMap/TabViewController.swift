@@ -92,7 +92,6 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
                     performUIUpdatesOnMain {
                         self.overWriteAlert()
                     }
-                    print("get oneStudentlocation is true")
                 } else {
                     OTMClient.Student.PostedLocation = false
                     performUIUpdatesOnMain {

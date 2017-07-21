@@ -43,7 +43,6 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
 
     
     override func viewDidLoad() {
-        print("viewDidLoad()")
         locationTextField.text = ""
         websiteTextField.text = ""
         debugTextView.text = ""
@@ -72,7 +71,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-//        let annotation = MKAnnotation()
+        let annotation = MKPointAnnotation()
         // Start Geocoder
         let geocoder = CLGeocoder()
         
@@ -95,7 +94,31 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            print(result!)
+            
+            let latitude = result?[0].location?.coordinate.latitude
+            let longitude = result?[0].location?.coordinate.longitude
+            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+            
+            let addressArray = result?[0].addressDictionary?["FormattedAddressLines"] as? [String]
+            
+            annotation.coordinate = coordinate
+            OTMClient.Student.OTMStudentAnnotation = annotation
+            OTMClient.Student.OTMStudentLatitude = latitude!
+            OTMClient.Student.OTMStudentLongitude = longitude!
+            OTMClient.Student.OTMStudentLocTextField = (addressArray?[0])!
+            print(OTMClient.Student.OTMStudentAnnotation)
+            print(OTMClient.Student.OTMStudentLatitude)
+            print(OTMClient.Student.OTMStudentLongitude)
+            
+            
+            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "SubmitLocationViewController") {
+                performUIUpdatesOnMain {
+                    self.activityIndicator.stopAnimating()
+                    self.view.alpha = CGFloat(1.00)
+                    self.present(controller, animated: true, completion: nil)
+                }
+            }
+            
         }
         
         
