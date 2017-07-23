@@ -38,12 +38,14 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
     }
     
     @IBAction func reloadData(_ sender: Any) {
-        view.alpha = CGFloat(0.75)
-        activityIndicator.center = view.center
-        activityIndicator.activityIndicatorViewStyle = .whiteLarge
-        activityIndicator.color = UIColor.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
+        
+        OTMClient.Animations.beginActivityIndicator(view: self.view, activityIndicator: OTMClient.Animations.activityIndicator)
+//        view.alpha = CGFloat(0.75)
+//        activityIndicator.center = view.center
+//        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+//        activityIndicator.color = UIColor.gray
+//        view.addSubview(activityIndicator)
+//        activityIndicator.startAnimating()
       //  NotificationCenter.default.post(name: Notification.Name(rawValue:  "SuccessNotification"), object: self)
         
         // Get the updated data
@@ -52,9 +54,11 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
                 OTMClient.Students.OTMStudentsArray = students!
                 
                 performUIUpdatesOnMain {
-                    self.activityIndicator.stopAnimating()
-                    self.view.alpha = CGFloat(1.00)
-                    self.view.reloadInputViews()
+                    
+                    OTMClient.Animations.endActivityIndicator(view: self.view, activityIndicator: OTMClient.Animations.activityIndicator)
+//                    self.activityIndicator.stopAnimating()
+//                    self.view.alpha = CGFloat(1.00)
+//                    self.view.reloadInputViews()
                     print("Reload worked")
                 }
             } else {

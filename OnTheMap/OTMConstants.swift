@@ -89,6 +89,26 @@ extension OTMClient {
         static var OTMStudentObjectId = String()
     }
     
+    struct Animations {
+        static var activityIndicator = UIActivityIndicatorView()
+        // Start activity animation
+        static func beginActivityIndicator(view: UIView, activityIndicator: UIActivityIndicatorView) {
+            view.alpha = CGFloat(0.75)
+            
+            activityIndicator.center = view.center
+            activityIndicator.activityIndicatorViewStyle = .whiteLarge
+            activityIndicator.color = UIColor.gray
+            view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+        }
+        // End Activity animation
+        static func endActivityIndicator(view: UIView, activityIndicator: UIActivityIndicatorView) {
+            activityIndicator.stopAnimating()
+            view.alpha = CGFloat(1.00)
+            view.reloadInputViews()
+            
+        }
+    }
 
     
 }
