@@ -39,38 +39,31 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
     
     @IBAction func reloadData(_ sender: Any) {
         
-        OTMClient.Animations.beginActivityIndicator(view: self.view, activityIndicator: OTMClient.Animations.activityIndicator)
-//        view.alpha = CGFloat(0.75)
-//        activityIndicator.center = view.center
-//        activityIndicator.activityIndicatorViewStyle = .whiteLarge
-//        activityIndicator.color = UIColor.gray
-//        view.addSubview(activityIndicator)
-//        activityIndicator.startAnimating()
-      //  NotificationCenter.default.post(name: Notification.Name(rawValue:  "SuccessNotification"), object: self)
-        
+        performUIUpdatesOnMain {
+            OTMClient.Animations.beginActivityIndicator(view: self.view)
+        }
+
         // Get the updated data
         OTMClient.sharedInstance().getStudentLocations { (students, error) in
             if error == nil {
                 OTMClient.Students.OTMStudentsArray = students!
                 
                 performUIUpdatesOnMain {
-                    
-                    OTMClient.Animations.endActivityIndicator(view: self.view, activityIndicator: OTMClient.Animations.activityIndicator)
-//                    self.activityIndicator.stopAnimating()
-//                    self.view.alpha = CGFloat(1.00)
-//                    self.view.reloadInputViews()
-                    print("Reload worked")
+                    OTMClient.Animations.endActivityIndicator(view: self.view)
                 }
             } else {
-                self.activityIndicator.stopAnimating()
-                self.view.alpha = CGFloat(1.00)
-                self.view.reloadInputViews()
+                performUIUpdatesOnMain {
+                    OTMClient.Animations.endActivityIndicator(view: self.view)
+                }
             }
         }
     }
 
     @IBAction func addStudentLocation(_ sender: Any) {
         
+        performUIUpdatesOnMain {
+            OTMClient.Animations.beginActivityIndicator(view: self.view)
+        }
 
         // Get single student locatino if available.
         OTMClient.sharedInstance().getOneStudentLocation { (success, student, errorString) in
@@ -80,6 +73,7 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
                     OTMClient.Student.PostedLocation = true
                     OTMClient.Student.OTMStudentObjectId = (student?.objectId)!
                     performUIUpdatesOnMain {
+                        OTMClient.Animations.endActivityIndicator(view: self.view)
                         self.overWriteAlert()
                     }
                 } else {

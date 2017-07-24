@@ -29,23 +29,19 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
     // Acitivity indicator
     var activityIndicator = UIActivityIndicatorView()
     
-    // 1) link everythings
-    // 2) Set up text field delegate
-    // 3) initiate text field delegaet
-    // 4) set up initial steps of action
-    // 5) get the lat long of the student for postin gor putting
-    // 6) if locatonpost true put if false post.
-    
-    
+
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var debugTextView: UITextView!
 
     
     override func viewDidLoad() {
-        locationTextField.text = ""
-        websiteTextField.text = ""
-        debugTextView.text = ""
+        performUIUpdatesOnMain {
+            self.locationTextField.text = ""
+            self.websiteTextField.text = ""
+            self.debugTextView.text = ""
+        }
+        
         
         locationTextField.delegate = self
         websiteTextField.delegate = self
@@ -62,11 +58,15 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func findLocationAddURL(_ sender: Any) {
         
+        performUIUpdatesOnMain {
+            OTMClient.Animations.beginActivityIndicator(view: self.view)
+        }
         // locationtextfield
         if locationTextField.text != nil || locationTextField.text != "" {
             OTMClient.Student.OTMStudentAddress = locationTextField.text!
         } else {
             performUIUpdatesOnMain {
+                OTMClient.Animations.endActivityIndicator(view: self.view)
                 self.showAddressError()
             }
         }
@@ -76,6 +76,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
             OTMClient.Student.OTMStudenURL = websiteTextField.text!
         } else {
             performUIUpdatesOnMain {
+                OTMClient.Animations.endActivityIndicator(view: self.view)
                 self.showWebError()
             }
         }
@@ -83,17 +84,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         let annotation = MKPointAnnotation()
         // Start Geocoder
         let geocoder = CLGeocoder()
-        
-        
-        
-        // Start Animation process
-        view.alpha = CGFloat(0.75)
-        activityIndicator.center = view.center
-        activityIndicator.activityIndicatorViewStyle = .whiteLarge
-        activityIndicator.color = UIColor.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        
+
         
         // Find Location of student entry.
         geocoder.geocodeAddressString(OTMClient.Student.OTMStudentAddress) { (result, error) in
@@ -122,8 +113,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
             // pushing to next controller
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "SubmitLocationViewController") as! SubmitLocationViewController
             performUIUpdatesOnMain {
-                self.activityIndicator.stopAnimating()
-                self.view.alpha = CGFloat(1.00)
+                OTMClient.Animations.endActivityIndicator(view: self.view)
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         }

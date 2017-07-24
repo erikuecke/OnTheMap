@@ -31,10 +31,10 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
         
         // For Textfield/Keyboard
-        subscribeToNotification(.UIKeyboardWillShow, selector: #selector(keyboardWillShow))
-        subscribeToNotification(.UIKeyboardWillHide, selector: #selector(keyboardWillHide))
-        subscribeToNotification(.UIKeyboardDidShow, selector: #selector(keyboardDidShow))
-        subscribeToNotification(.UIKeyboardDidHide, selector: #selector(keyboardDidHide))
+//        subscribeToNotification(.UIKeyboardWillShow, selector: #selector(keyboardWillShow))
+//        subscribeToNotification(.UIKeyboardWillHide, selector: #selector(keyboardWillHide))
+//        subscribeToNotification(.UIKeyboardDidShow, selector: #selector(keyboardDidShow))
+//        subscribeToNotification(.UIKeyboardDidHide, selector: #selector(keyboardDidHide))
         
     }
     
@@ -79,7 +79,16 @@ class LoginViewController: UIViewController {
     
     // Sign Up for account
     @IBAction func signUpPressed(_ sender: Any) {
-        // open sign up link
+        performUIUpdatesOnMain {
+            OTMClient.Animations.beginActivityIndicator(view: self.view)
+            if let linkToOpen = URL(string: "https://www.udacity.com/account/auth#!/signup") {
+                
+                    OTMClient.Animations.endActivityIndicator(view: self.view)
+                
+                UIApplication.shared.open(linkToOpen, options: [:])
+                
+            }
+        }
     }
     
     // Complete login and segue to first controller
@@ -109,49 +118,48 @@ extension LoginViewController: UITextFieldDelegate {
     
     // MARK: Show/Hide Keyboard
     
-    func keyboardWillShow(_ notification: Notification) {
-        print("keyboardWillShow")
-        if !keyboardOnScreen {
-            view.frame.origin.y -= keyboardHeight(notification)
-//            logoImageView.isHidden = true
-        }
-    }
+//    func keyboardWillShow(_ notification: Notification) {
+//        print("keyboardWillShow")
+//        if !keyboardOnScreen {
+//            view.frame.origin.y -= keyboardHeight(notification)
+////            logoImageView.isHidden = true
+//        }
+//    }
+//    
+//    func keyboardWillHide(_ notification: Notification) {
+//        print("keyboardWillHide")
+//        if keyboardOnScreen {
+//            view.frame.origin.y += keyboardHeight(notification)
+////            logoImageView.isHidden = false
+//        }
+//    }
     
-    func keyboardWillHide(_ notification: Notification) {
-        print("keyboardWillHide")
-        if keyboardOnScreen {
-            view.frame.origin.y += keyboardHeight(notification)
-//            logoImageView.isHidden = false
-        }
-    }
+//    func keyboardDidShow(_ notification: Notification) {
+//        print("keyboardDidShow")
+//        keyboardOnScreen = true
+//    }
+//    
+//    func keyboardDidHide(_ notification: Notification) {
+//        print("keyboardDidHide")
+//        keyboardOnScreen = false
+//    }
     
-    func keyboardDidShow(_ notification: Notification) {
-        print("keyboardDidShow")
-        keyboardOnScreen = true
-    }
-    
-    func keyboardDidHide(_ notification: Notification) {
-        print("keyboardDidHide")
-        keyboardOnScreen = false
-    }
-    
-    private func keyboardHeight(_ notification: Notification) -> CGFloat {
-        let userInfo = (notification as NSNotification).userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.cgRectValue.height
-    }
-    
-    private func resignIfFirstResponder(_ textField: UITextField) {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
-    }
-    
+//    private func keyboardHeight(_ notification: Notification) -> CGFloat {
+//        let userInfo = (notification as NSNotification).userInfo
+//        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+//        return keyboardSize.cgRectValue.height
+//    }
+//    
+//    private func resignIfFirstResponder(_ textField: UITextField) {
+//        if textField.isFirstResponder {
+//            textField.resignFirstResponder()
+//        }
+//    }
+//
     @IBAction func userDidTapView(_ sender: AnyObject) {
-        resignIfFirstResponder(emailTextField)
-        resignIfFirstResponder(passwordTextField)
+       resignFirstResponder()
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()

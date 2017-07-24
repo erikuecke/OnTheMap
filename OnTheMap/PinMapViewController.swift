@@ -16,9 +16,18 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        performUIUpdatesOnMain {
+            OTMClient.Animations.beginActivityIndicator(view: self.view)
+        }
+
+        
 
         mapView.removeAnnotations(mapView.annotations)
         
@@ -64,8 +73,10 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                     }
                     
                     performUIUpdatesOnMain {
+                        
                         // When the array is complete, we add the annotations to the map.
                         self.mapView.addAnnotations(annotations)
+                        OTMClient.Animations.endActivityIndicator(view: self.view)
                     }
                 }
             }

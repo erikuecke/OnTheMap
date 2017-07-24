@@ -92,7 +92,7 @@ extension OTMClient {
     struct Animations {
         static var activityIndicator = UIActivityIndicatorView()
         // Start activity animation
-        static func beginActivityIndicator(view: UIView, activityIndicator: UIActivityIndicatorView) {
+        static func beginActivityIndicator(view: UIView, activityIndicator: UIActivityIndicatorView = activityIndicator) {
             view.alpha = CGFloat(0.75)
             
             activityIndicator.center = view.center
@@ -102,7 +102,7 @@ extension OTMClient {
             activityIndicator.startAnimating()
         }
         // End Activity animation
-        static func endActivityIndicator(view: UIView, activityIndicator: UIActivityIndicatorView) {
+        static func endActivityIndicator(view: UIView, activityIndicator: UIActivityIndicatorView = activityIndicator) {
             activityIndicator.stopAnimating()
             view.alpha = CGFloat(1.00)
             view.reloadInputViews()

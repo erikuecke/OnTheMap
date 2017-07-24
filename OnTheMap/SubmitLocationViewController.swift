@@ -15,16 +15,31 @@ class SubmitLocationViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
-        navigationItem.title = "Submit locaiton"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAddEnterLocation))
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        
+            self.navigationItem.title = "Submit locaiton"
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelAddEnterLocation))
+            
+            
+            
         
         // Set up MapView
         let annotation = OTMClient.Student.OTMStudentAnnotation
         let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
         let location = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
         let region = MKCoordinateRegion(center: location, span: span)
-        self.mapView.setRegion(region, animated: true)
-        self.mapView.addAnnotation(annotation)
+        
+       
+            self.mapView.setRegion(region, animated: true)
+            self.mapView.addAnnotation(annotation)
+
+        
+        
     }
     
     // right callout accessory view
@@ -54,17 +69,24 @@ class SubmitLocationViewController: UIViewController {
     
     // Submitting location new or not.
     @IBAction func submitLocation(_ sender: Any) {
-
+        performUIUpdatesOnMain {
+            OTMClient.Animations.beginActivityIndicator(view: self.view)
+        }
          // For whether it is being over written or not.
         if OTMClient.Student.PostedLocation  {
             // Put Method for location if overwriting.
             OTMClient.sharedInstance().putStudentLocation(completionHandlerForPutStudent: { (success, errorString) in
                 if success {
                     performUIUpdatesOnMain {
+                        OTMClient.Animations.endActivityIndicator(view: self.view)
                         self.navigationController?.popToRootViewController(animated: true)
                     }
                 } else {
-                    print(errorString!)
+                    performUIUpdatesOnMain {
+                        OTMClient.Animations.endActivityIndicator(view: self.view)
+                         print(errorString!)
+                    }
+                   
                 }
             })
         } else {
@@ -76,6 +98,11 @@ class SubmitLocationViewController: UIViewController {
                         performUIUpdatesOnMain {
                             self.navigationController?.popToRootViewController(animated: true)
                         }
+                    }
+                } else {
+                    performUIUpdatesOnMain {
+                        OTMClient.Animations.endActivityIndicator(view: self.view)
+                        print(errorString!)
                     }
                 }
             }

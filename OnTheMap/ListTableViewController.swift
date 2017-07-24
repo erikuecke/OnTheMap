@@ -26,11 +26,16 @@ class ListTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        performUIUpdatesOnMain {
+            OTMClient.Animations.beginActivityIndicator(view: self.view)
+        }
         OTMClient.sharedInstance().getStudentLocations { (students, error) in
             if let students = students {
                 OTMClient.Students.OTMStudentsArray = students
                 performUIUpdatesOnMain {
                     self.listTableView.reloadData()
+                    OTMClient.Animations.endActivityIndicator(view: self.view)
                 }
             } else {
                 print(error ?? "empty errors")
@@ -70,9 +75,15 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        performUIUpdatesOnMain {
+            OTMClient.Animations.beginActivityIndicator(view: self.view)
+        }
     
         let otmStudentInfo = OTMClient.Students.OTMStudentsArray[indexPath.row]
         if let linkToOpen = URL(string: otmStudentInfo.mediaURL!) {
+            performUIUpdatesOnMain {
+                OTMClient.Animations.endActivityIndicator(view: self.view)
+            }
             UIApplication.shared.open(linkToOpen, options: [:])
             
         }
