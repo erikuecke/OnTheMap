@@ -105,13 +105,10 @@ class SubmitLocationViewController: UIViewController {
         }
     }
     
-    // FailedSummition
+    // Failed Submission
     func failedToSubmitAlert(_ errorString: NSError) {
         let message = "Your submission failed to post because: \(errorString), please check the information you entered and try again."
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        alert.addAction(cancelAction)
-        
         let okAction = UIAlertAction(title: "Check Entry", style: .default) { (action) in
             
             
