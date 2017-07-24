@@ -122,7 +122,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
     // Text Field Delegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        locationTextField.resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
     

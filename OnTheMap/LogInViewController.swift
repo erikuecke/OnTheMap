@@ -30,12 +30,6 @@ class LoginViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
-        // For Textfield/Keyboard
-//        subscribeToNotification(.UIKeyboardWillShow, selector: #selector(keyboardWillShow))
-//        subscribeToNotification(.UIKeyboardWillHide, selector: #selector(keyboardWillHide))
-//        subscribeToNotification(.UIKeyboardDidShow, selector: #selector(keyboardDidShow))
-//        subscribeToNotification(.UIKeyboardDidHide, selector: #selector(keyboardDidHide))
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,7 +89,9 @@ class LoginViewController: UIViewController {
     private func completeLogIn() {
         self.debugTextLabel.text = ""
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-        self.present(controller, animated: true, completion: nil)
+        performUIUpdatesOnMain {
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
     func displayError(_ errorString: String?) {
@@ -103,9 +99,6 @@ class LoginViewController: UIViewController {
             debugTextLabel.text = errorString
         }
     }
-    
-    
-    
 }
 
 // MARK: - LoginViewController: UITextFieldDelegate
@@ -115,49 +108,8 @@ extension LoginViewController: UITextFieldDelegate {
     // MARK: UITextFieldDelegate
     
     
-    
-    // MARK: Show/Hide Keyboard
-    
-//    func keyboardWillShow(_ notification: Notification) {
-//        print("keyboardWillShow")
-//        if !keyboardOnScreen {
-//            view.frame.origin.y -= keyboardHeight(notification)
-////            logoImageView.isHidden = true
-//        }
-//    }
-//    
-//    func keyboardWillHide(_ notification: Notification) {
-//        print("keyboardWillHide")
-//        if keyboardOnScreen {
-//            view.frame.origin.y += keyboardHeight(notification)
-////            logoImageView.isHidden = false
-//        }
-//    }
-    
-//    func keyboardDidShow(_ notification: Notification) {
-//        print("keyboardDidShow")
-//        keyboardOnScreen = true
-//    }
-//    
-//    func keyboardDidHide(_ notification: Notification) {
-//        print("keyboardDidHide")
-//        keyboardOnScreen = false
-//    }
-    
-//    private func keyboardHeight(_ notification: Notification) -> CGFloat {
-//        let userInfo = (notification as NSNotification).userInfo
-//        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-//        return keyboardSize.cgRectValue.height
-//    }
-//    
-//    private func resignIfFirstResponder(_ textField: UITextField) {
-//        if textField.isFirstResponder {
-//            textField.resignFirstResponder()
-//        }
-//    }
-//
-    @IBAction func userDidTapView(_ sender: AnyObject) {
-       resignFirstResponder()
+   @IBAction func userDidTapView(_ sender: AnyObject) {
+   resignFirstResponder()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

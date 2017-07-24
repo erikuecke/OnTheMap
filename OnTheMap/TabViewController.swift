@@ -105,14 +105,9 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
             performUIUpdatesOnMain {
                 self.navigationController?.pushViewController(controller, animated: true)
             }
-            
-                
-            
         }
         alert.addAction(confirmAction)
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    
+    }  
 }

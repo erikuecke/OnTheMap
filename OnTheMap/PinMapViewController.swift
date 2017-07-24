@@ -23,11 +23,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        performUIUpdatesOnMain {
-            OTMClient.Animations.beginActivityIndicator(view: self.view)
-        }
-
-        
+        OTMClient.Animations.beginActivityIndicator(view: self.view)
 
         mapView.removeAnnotations(mapView.annotations)
         
@@ -81,8 +77,6 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                 }
             }
         }
-        
-        
     }
     
     

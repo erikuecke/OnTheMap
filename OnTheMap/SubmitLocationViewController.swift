@@ -20,13 +20,9 @@ class SubmitLocationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        
-            self.navigationItem.title = "Submit locaiton"
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelAddEnterLocation))
-            
-            
-            
+        self.navigationItem.title = "Submit locaiton"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelAddEnterLocation))
+     
         
         // Set up MapView
         let annotation = OTMClient.Student.OTMStudentAnnotation
@@ -37,8 +33,6 @@ class SubmitLocationViewController: UIViewController {
        
             self.mapView.setRegion(region, animated: true)
             self.mapView.addAnnotation(annotation)
-
-        
         
     }
     
@@ -84,7 +78,8 @@ class SubmitLocationViewController: UIViewController {
                 } else {
                     performUIUpdatesOnMain {
                         OTMClient.Animations.endActivityIndicator(view: self.view)
-                         print(errorString!)
+                        self.failedToSubmitAlert(errorString!)
+            
                     }
                    
                 }
@@ -102,13 +97,31 @@ class SubmitLocationViewController: UIViewController {
                 } else {
                     performUIUpdatesOnMain {
                         OTMClient.Animations.endActivityIndicator(view: self.view)
-                        print(errorString!)
+                        self.failedToSubmitAlert(errorString!)
+                        
                     }
                 }
             }
         }
     }
     
-    
-    
+    // FailedSummition
+    func failedToSubmitAlert(_ errorString: NSError) {
+        let message = "Your submission failed to post because: \(errorString), please check the information you entered and try again."
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        alert.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "Check Entry", style: .default) { (action) in
+            
+            
+            performUIUpdatesOnMain {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        alert.addAction(okAction)
+        
+        present(alert, animated: true, completion: nil)
+    }  
+
 }
