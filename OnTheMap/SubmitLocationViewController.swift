@@ -20,7 +20,7 @@ class SubmitLocationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationItem.title = "Submit locaiton"
+        self.navigationItem.title = "Submit location"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelAddEnterLocation))
      
         
