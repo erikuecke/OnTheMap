@@ -30,7 +30,7 @@ class ListTableViewController: UIViewController {
         performUIUpdatesOnMain {
             OTMClient.Animations.beginActivityIndicator(view: self.view)
         }
-        OTMClient.sharedInstance().getStudentLocations { (students, error) in
+        OTMClient.sharedInstance().getStudentLocations { (students, errorString) in
             if let students = students {
                 OTMClient.Students.OTMStudentsArray = students
                 performUIUpdatesOnMain {
@@ -38,7 +38,7 @@ class ListTableViewController: UIViewController {
                     OTMClient.Animations.endActivityIndicator(view: self.view)
                 }
             } else {
-                print(error ?? "empty errors")
+                self.errorAlert(errorString!)
             }
         }
     }

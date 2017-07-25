@@ -44,8 +44,8 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         }
 
         // Get the updated data
-        OTMClient.sharedInstance().getStudentLocations { (students, error) in
-            if error == nil {
+        OTMClient.sharedInstance().getStudentLocations { (students, errorString) in
+            if errorString == nil {
                 OTMClient.Students.OTMStudentsArray = students!
                 
                 performUIUpdatesOnMain {
@@ -54,6 +54,8 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
             } else {
                 performUIUpdatesOnMain {
                     OTMClient.Animations.endActivityIndicator(view: self.view)
+                    self.errorAlert(errorString!)
+                    
                 }
             }
         }
@@ -91,7 +93,9 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         }
         
     }
+    // MARK: ALERTS
     
+    // Overwrite alert
     func overWriteAlert() {
         let message = "User \"\(OTMClient.Student.OTMStudentFirstName) \(OTMClient.Student.OTMStudentLastName)\" Has Already Posted a Student Location. Would You Like to Overwrite Their Locaiton?"
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
@@ -109,5 +113,12 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         alert.addAction(confirmAction)
         
         present(alert, animated: true, completion: nil)
-    }  
+    }
+    
+    // Error Alert
+    func errorAlert(_ errorString: String) {
+        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

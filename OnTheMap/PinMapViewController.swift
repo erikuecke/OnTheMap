@@ -16,10 +16,6 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -31,8 +27,8 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         // MKPointAnnotation student in students
         var annotations = [MKPointAnnotation]()
         
-        OTMClient.sharedInstance().getStudentLocations { (students, error) in
-            if error == nil {
+        OTMClient.sharedInstance().getStudentLocations { (students, errorString) in
+            if errorString == nil {
                 if let students = students {
                     OTMClient.Students.OTMStudentsArray = students
                     
@@ -75,10 +71,11 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                         OTMClient.Animations.endActivityIndicator(view: self.view)
                     }
                 }
+            } else {
+              self.errorAlert(errorString!)
             }
         }
     }
-    
     
     // MARK: - MKMapViewDelegate
     

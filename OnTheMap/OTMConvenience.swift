@@ -144,7 +144,7 @@ extension OTMClient {
         
     }
     
-    func getStudentLocations(completionHandlerForGetLocations: @escaping (_ results: [OTMStudent]?, _ error: NSError?) -> Void) {
+    func getStudentLocations(completionHandlerForGetLocations: @escaping (_ results: [OTMStudent]?, _ errorString: String?) -> Void) {
         /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
         let parameters = [OTMClient.ParameterKeys.Limit: "100"]
         
@@ -152,8 +152,8 @@ extension OTMClient {
         let _ = parseTaskForGETMethod(OTMClient.PARSEMethods.StudentLocation, parameters: parameters as [String : AnyObject], host: OTMClient.Constansts.ParseHost, path: OTMClient.Constansts.ParsePath) { (results, error) in
             
             /* 3. Send the desired value(s) to completion handler */
-            if let error = error {
-                completionHandlerForGetLocations(nil, error)
+            if error != nil {
+                completionHandlerForGetLocations(nil, error?.localizedDescription)
             } else {
                 
                 if let results = results?[OTMClient.JSONResponseKeys.Results] as? [[String:AnyObject]] {
@@ -161,7 +161,11 @@ extension OTMClient {
                     
                     completionHandlerForGetLocations(students, nil)
                 } else {
-                    completionHandlerForGetLocations(nil, NSError(domain: "getStudent location parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getStudentLocations"]))
+                    if let errorString = results?[OTMClient.JSONResponseKeys.Error] as? String {
+                        print("ForGetLocations errorSTring: \(errorString)")
+                        completionHandlerForGetLocations(nil, "TEst get student locations")
+                    }
+                    
                 }
             }
         }

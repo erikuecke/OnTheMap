@@ -60,8 +60,6 @@ class LoginViewController: UIViewController {
                         self.completeLogIn()
                     } else {
                         self.errorAlert(errorString!)
-//                        print(errorString!)
-
                     }
                 }
             }
