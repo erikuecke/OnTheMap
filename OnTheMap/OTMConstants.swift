@@ -55,6 +55,7 @@ extension OTMClient {
         static let UdacityLastName = "last_name"
         static let UdacityFirstName = "first_name"
         
+        
         // MARK: PARSE
         static let Latitude = "latitude"
         static let Longitude = "longitude"
@@ -68,6 +69,7 @@ extension OTMClient {
         
         // MARK: RESULTS
         static let Results = "results"
+        static let Error = "error"
     }
     
     // PARSED STUDENTS ARRAY OF STRUCTS

@@ -51,7 +51,7 @@ class OTMClient: NSObject  {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
+                completionHandlerForGET(nil, error! as NSError)
                 return
             }
             
@@ -112,13 +112,16 @@ class OTMClient: NSObject  {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
+                completionHandlerForPOST(nil, error! as NSError)
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299{
                 sendError("Your request returned a status code other than 2xx!")
+                return
+            } else if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 500 && statusCode <= 599{
+                sendError("The internet connection is offline, please try again")
                 return
             }
             

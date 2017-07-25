@@ -59,7 +59,9 @@ class LoginViewController: UIViewController {
                     if success {
                         self.completeLogIn()
                     } else {
-                        self.displayError(errorString)
+                        self.errorAlert(errorString!)
+//                        print(errorString!)
+
                     }
                 }
             }
@@ -89,6 +91,12 @@ class LoginViewController: UIViewController {
         performUIUpdatesOnMain {
             self.present(controller, animated: true, completion: nil)
         }
+    }
+    
+    func errorAlert(_ errorString: String) {
+        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func displayError(_ errorString: String?) {

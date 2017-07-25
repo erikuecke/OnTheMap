@@ -68,15 +68,17 @@ extension OTMClient {
             
             /* 3. Send the desired value(s) to completion handler */
             if error != nil {
-                completionHandlerForPostSession(false, nil, "Login Failed (Session ID).")
+                completionHandlerForPostSession(false, nil, error?.localizedDescription)
                 
             } else {
                 if let account = results?[OTMClient.JSONResponseKeys.UdacityAccount] as? [String: AnyObject],
                 let sessionKey = account[OTMClient.JSONResponseKeys.UdacityUserKey] as? String {
                     completionHandlerForPostSession(true, sessionKey, nil)
                 } else {
-                    print("Could not find \(OTMClient.JSONResponseKeys.UdacityUserKey) in \(results!)")
-                    completionHandlerForPostSession(false, nil, "Login Failed (Session ID).")
+                    if let errorString = results?[OTMClient.JSONResponseKeys.Error] as? String {
+                        completionHandlerForPostSession(false, nil, errorString)
+                    }
+                    
                 }
             }
         }
@@ -132,8 +134,10 @@ extension OTMClient {
 
                     completionHandlerForUserData(true, results, nil)
                 } else {
-                    print("Could not find \(OTMClient.JSONResponseKeys.UdacityUser) in \(results!)")
-                    completionHandlerForUserData(false, nil, "Login Failed (getUdacityUser).")
+                    // Error String for alert later
+                    if let errorString = results?[OTMClient.JSONResponseKeys.Error] as? String {
+                        completionHandlerForUserData(false, nil, errorString)
+                    }
                 }
             }
         }
