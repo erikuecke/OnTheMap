@@ -77,17 +77,32 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
         
         performUIUpdatesOnMain {
             OTMClient.Animations.beginActivityIndicator(view: self.view)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     
         let otmStudentInfo = OTMClient.Students.OTMStudentsArray[indexPath.row]
+        
         if let linkToOpen = URL(string: otmStudentInfo.mediaURL!) {
-            performUIUpdatesOnMain {
-                OTMClient.Animations.endActivityIndicator(view: self.view)
+            
+            if  UIApplication.shared.canOpenURL(linkToOpen) {
+                performUIUpdatesOnMain {
+                    OTMClient.Animations.endActivityIndicator(view: self.view)
+                    UIApplication.shared.open(linkToOpen, options: [:])
+                }
+            } else {
+                errorAlert("URL Invalid")
             }
-            UIApplication.shared.open(linkToOpen, options: [:])
+            
             
         }
     }
+    // URL Error alert
+    func errorAlert(_ errorString: String) {
+        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
   
 }
 

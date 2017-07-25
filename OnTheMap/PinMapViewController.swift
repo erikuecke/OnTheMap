@@ -108,10 +108,25 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
-                
+                if let linkToOpen = URL(string: toOpen) {
+                    
+                    if  UIApplication.shared.canOpenURL(linkToOpen) {
+                        performUIUpdatesOnMain {
+                            OTMClient.Animations.endActivityIndicator(view: self.view)
+                            app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+                        }
+                    } else {
+                        errorAlert("URL Invalid")
+                    }
+                }
             }
         }
+    }
+    // URL Error alert
+    func errorAlert(_ errorString: String) {
+        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
