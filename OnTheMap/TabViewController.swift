@@ -83,7 +83,7 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
                     performUIUpdatesOnMain {
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "EnterLocationViewController") as! EnterLocationViewController
                         performUIUpdatesOnMain {
-                            
+                            OTMClient.Animations.endActivityIndicator(view: self.view)
                             self.navigationController?.pushViewController(controller, animated: true)
                             
                         }

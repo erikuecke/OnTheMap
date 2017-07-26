@@ -90,7 +90,10 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
                     UIApplication.shared.open(linkToOpen, options: [:])
                 }
             } else {
-                errorAlert("URL Invalid")
+                performUIUpdatesOnMain {
+                    OTMClient.Animations.endActivityIndicator(view: self.view)
+                    self.errorAlert("URL Invalid")
+                }
             }
             
             

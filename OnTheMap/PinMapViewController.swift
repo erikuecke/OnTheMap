@@ -72,7 +72,11 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
                     }
                 }
             } else {
-              self.errorAlert(errorString!)
+                
+                performUIUpdatesOnMain {
+                    OTMClient.Animations.endActivityIndicator(view: self.view)
+                    self.errorAlert(errorString!)
+                }
             }
         }
     }
