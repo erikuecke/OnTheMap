@@ -112,13 +112,14 @@ class OTMClient: NSObject  {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
+                print("THERE WAS AN ERROR")
                 completionHandlerForPOST(nil, error! as NSError)
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("taskForPost MethodYour request returned a status code other than 2xx!")
+                sendError("Log In Credentials were incorrect please try again.")
                 return
             }
             
