@@ -90,6 +90,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         geocoder.geocodeAddressString(OTMClient.Student.OTMStudentAddress) { (result, error) in
             
             if error != nil {
+                OTMClient.Animations.endActivityIndicator(view: self.view)
                 self.showAddressError()
                 return
             }
