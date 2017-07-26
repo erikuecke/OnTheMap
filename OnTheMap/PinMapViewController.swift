@@ -30,9 +30,9 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         OTMClient.sharedInstance().getStudentLocations { (students, errorString) in
             if errorString == nil {
                 if let students = students {
-                    OTMClient.Students.OTMStudentsArray = students
+                    OTMStudents.Students.OTMStudentsArray = students
                     
-                    for student in OTMClient.Students.OTMStudentsArray {
+                    for student in OTMStudents.Students.OTMStudentsArray {
                         
                         // Notice that the float values for CLLocationDegree values.
                         let lat: CLLocationDegrees

@@ -32,7 +32,7 @@ class ListTableViewController: UIViewController {
         }
         OTMClient.sharedInstance().getStudentLocations { (students, errorString) in
             if let students = students {
-                OTMClient.Students.OTMStudentsArray = students
+                OTMStudents.Students.OTMStudentsArray = students
                 performUIUpdatesOnMain {
                     self.listTableView.reloadData()
                     OTMClient.Animations.endActivityIndicator(view: self.view)
@@ -58,7 +58,7 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
         
         // Get cell type
         let cellID = "ListTableCell"
-        let student = OTMClient.Students.OTMStudentsArray[indexPath.row]
+        let student = OTMStudents.Students.OTMStudentsArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as UITableViewCell!
         
         // Set Cell defaults
@@ -70,7 +70,7 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return OTMClient.Students.OTMStudentsArray.count
+        return OTMStudents.Students.OTMStudentsArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -80,7 +80,7 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deselectRow(at: indexPath, animated: true)
         }
     
-        let otmStudentInfo = OTMClient.Students.OTMStudentsArray[indexPath.row]
+        let otmStudentInfo = OTMStudents.Students.OTMStudentsArray[indexPath.row]
         
         if let linkToOpen = URL(string: otmStudentInfo.mediaURL!) {
             

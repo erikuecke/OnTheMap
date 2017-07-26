@@ -46,7 +46,7 @@ class TabViewController: UITabBarController, UINavigationControllerDelegate {
         // Get the updated data
         OTMClient.sharedInstance().getStudentLocations { (students, errorString) in
             if errorString == nil {
-                OTMClient.Students.OTMStudentsArray = students!
+                OTMStudents.Students.OTMStudentsArray = students!
                 
                 performUIUpdatesOnMain {
                     OTMClient.Animations.endActivityIndicator(view: self.view)

@@ -72,10 +72,7 @@ extension OTMClient {
         static let Error = "error"
     }
     
-    // PARSED STUDENTS ARRAY OF STRUCTS
-    struct Students {
-        static var OTMStudentsArray: [OTMStudent] = []
-    }
+    
     
     struct Student {
         static var OTMStudentKey = String()
