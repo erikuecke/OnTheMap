@@ -23,12 +23,6 @@ class LoginViewController: UIViewController {
     
     
     // MARK: Life Cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
- 
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -74,7 +68,7 @@ class LoginViewController: UIViewController {
             OTMClient.Animations.beginActivityIndicator(view: self.view)
             if let linkToOpen = URL(string: "https://www.udacity.com/account/auth#!/signup") {
                 
-                    OTMClient.Animations.endActivityIndicator(view: self.view)
+                OTMClient.Animations.endActivityIndicator(view: self.view)
                 
                 UIApplication.shared.open(linkToOpen, options: [:])
                 
@@ -107,10 +101,10 @@ extension LoginViewController: UITextFieldDelegate {
     // MARK: UITextFieldDelegate
     
     
-   @IBAction func userDidTapView(_ sender: AnyObject) {
-   resignFirstResponder()
+    @IBAction func userDidTapView(_ sender: AnyObject) {
+        resignFirstResponder()
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()

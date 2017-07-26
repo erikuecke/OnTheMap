@@ -146,7 +146,7 @@ extension OTMClient {
     
     func getStudentLocations(completionHandlerForGetLocations: @escaping (_ results: [OTMStudent]?, _ errorString: String?) -> Void) {
         /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
-        let parameters = [OTMClient.ParameterKeys.Limit: "100", OTMClient.ParameterKeys.Order: "-udateAt"]
+        let parameters = [OTMClient.ParameterKeys.Limit: "100", OTMClient.ParameterKeys.Order: "-updatedAt"]
         
         /* 2. Make the request */
         let _ = parseTaskForGETMethod(OTMClient.PARSEMethods.StudentLocation, parameters: parameters as [String : AnyObject], host: OTMClient.Constansts.ParseHost, path: OTMClient.Constansts.ParsePath) { (results, error) in
