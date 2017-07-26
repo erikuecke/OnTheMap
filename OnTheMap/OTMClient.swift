@@ -225,7 +225,7 @@ class OTMClient: NSObject  {
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Unable to properly connect to the server. Please try again by tapping the refresh icon.")
+                sendError("Unable to properly connect to the server. Please try again by tapping the \"FINISH\" button.")
                 return
             }
             
