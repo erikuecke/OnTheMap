@@ -11,12 +11,10 @@ import UIKit
 import MapKit
 
 class SubmitLocationViewController: UIViewController {
+    
     // code
     @IBOutlet weak var mapView: MKMapView!
     
-    override func viewDidLoad() {
-
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

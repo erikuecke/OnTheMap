@@ -241,7 +241,7 @@ extension OTMClient {
                     completionHandlerForPutStudent(true, nil)
                     
                 } else {
-                    completionHandlerForPutStudent(false,NSError(domain: "post Student location parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postStudentLocations"]))
+                    completionHandlerForPutStudent(false,error)
                 }
             }
         }
