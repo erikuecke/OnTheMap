@@ -91,11 +91,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func errorAlert(_ errorString: String) {
-        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
+    
     
     func displayError(_ errorString: String?) {
         if let errorString = errorString {
@@ -133,8 +129,18 @@ private extension LoginViewController {
     func unsubscribeFromAllNotifications() {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    
 }
 
+// For all error alerts in viewcontrollers
+extension UIViewController {
+    func errorAlert(_ errorString: String) {
+        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+}
 
 
 

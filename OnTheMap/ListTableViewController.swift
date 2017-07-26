@@ -99,12 +99,7 @@ extension ListTableViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
     }
-    // URL Error alert
-    func errorAlert(_ errorString: String) {
-        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
+    
     
   
 }
