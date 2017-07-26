@@ -18,12 +18,7 @@ class OTMStudents: NSObject {
     
     
     // MARK: Shared Instance
-    class func sharedInstance() -> OTMStudents {
-        struct Singleton {
-            static var sharedInstance = OTMStudents()
-        }
-        return Singleton.sharedInstance
-    }
+    static let sharedInstace = Students()
     
     
 
