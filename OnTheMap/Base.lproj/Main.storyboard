@@ -216,6 +216,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="knK-lA-yCF">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="d7V-qY-eVC" id="i60-3b-fSZ"/>
                                 </connections>
